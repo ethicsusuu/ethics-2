@@ -1,0 +1,1351 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>마감 D-1: 새내기의 아주 긴 하루</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Nanum+Pen+Script&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#FBFBF7;
+  --paper-2:#EAF1EC;
+  --ink:#24232B;
+  --ink-soft:#5D5C68;
+  --mint:#1E9C84;
+  --mint-soft:#D3EFE7;
+  --on-mint:#FFFFFF;
+  --java:#5A3A2E;
+  --grid:#D6EAE2;
+  --grid-strong:#8CC5B3;
+  --rule:#E2EBE7;
+  --note:#FFF4B0;
+  --note-2:#D6F2E8;
+  --note-ink:#24232B;
+  --veil:rgba(18,18,26,.58);
+  --shadow:rgba(36,35,43,.16);
+  --stage:#1B1B22;
+  --phone-frame:#16171D;
+  --phone-bg:#F6F6F9;
+  --phone-line:#E2E2EA;
+  --phone-ink:#1F1F26;
+  --phone-soft:#6B6B78;
+  --bubble:#FFFFFF;
+  --bubble-me:#1E9C84;
+  --bubble-me-ink:#FFFFFF;
+  --tag:#FFE9A8;
+  --tag-ink:#5A4500;
+  --thought-bg:rgba(255,255,255,.88);
+  --thought-ink:#4A3F57;
+  --hand:'Nanum Pen Script','Gowun Dodum',cursive;
+  --body:'Gowun Dodum','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:env(safe-area-inset-left,0px);
+  padding-right:env(safe-area-inset-right,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#1D1C23; --paper-2:#141318; --ink:#ECEAF3; --ink-soft:#A9A7B6;
+    --mint:#3CCBAE; --mint-soft:#1E3A34; --on-mint:#0E211C; --java:#D9B3A3;
+    --grid:#26332F; --grid-strong:#3F6B60; --rule:#2B2A33;
+    --note:#EADF92; --note-2:#A9DCCB; --veil:rgba(6,6,10,.66); --shadow:rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#1D1C23; --paper-2:#141318; --ink:#ECEAF3; --ink-soft:#A9A7B6;
+  --mint:#3CCBAE; --mint-soft:#1E3A34; --on-mint:#0E211C; --java:#D9B3A3;
+  --grid:#26332F; --grid-strong:#3F6B60; --rule:#2B2A33;
+  --note:#EADF92; --note-2:#A9DCCB; --veil:rgba(6,6,10,.66); --shadow:rgba(0,0,0,.45);
+}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{height:100%;margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);overflow:hidden}
+button{font:inherit}
+#app{position:relative;height:100%;overflow:hidden}
+.screen{position:absolute;inset:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* 원고지 바탕 */
+.sheet-bg{background-color:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:30px 30px;background-position:-1px -1px}
+
+/* 시작 화면 */
+#title{overflow-y:auto;display:flex;flex-direction:column;padding:32px 20px}
+.title-wrap{width:min(580px,100%);margin:auto;text-align:center;position:relative}
+.ring{position:absolute;right:-4%;top:-18%;width:132px;height:132px;border-radius:50%;border:8px solid var(--java);opacity:.1;pointer-events:none}
+.manuscript{display:inline-grid;grid-auto-flow:column;border-top:2px solid var(--grid-strong);border-left:2px solid var(--grid-strong);background:var(--paper)}
+.manuscript span{width:clamp(44px,min(14vw,15vh),92px);height:clamp(44px,min(14vw,15vh),92px);display:grid;place-items:center;border-right:2px solid var(--grid-strong);border-bottom:2px solid var(--grid-strong);font-family:var(--hand);font-size:clamp(38px,min(12vw,13vh),82px);line-height:1;color:var(--ink)}
+.manuscript b{font-weight:400;display:inline-block;opacity:0;transform:translateY(5px) rotate(-4deg);animation:write .45s ease forwards}
+@keyframes write{to{opacity:1;transform:none}}
+.sub{font-family:var(--hand);font-size:clamp(30px,6.5vw,40px);margin:18px 0 10px;color:var(--ink)}
+.premise{margin:0 auto 30px;max-width:30em;font-size:16px;line-height:1.75;color:var(--ink-soft);word-break:keep-all}
+.namebox{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:flex-end}
+.namebox label{width:100%;font-size:15px;color:var(--ink-soft)}
+.namebox input{font:inherit;font-size:22px;padding:8px 6px;width:min(220px,60vw);text-align:center;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:0}
+.namebox input:focus{outline:none;border-bottom-color:var(--mint)}
+.btn{font-family:var(--body);font-size:18px;padding:12px 24px;border:0;border-radius:12px;background:var(--mint);color:var(--on-mint);cursor:pointer;box-shadow:0 4px 0 var(--java)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--java)}
+.btn:focus-visible,.namebox input:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.hint{margin-top:28px;font-size:14px;color:var(--ink-soft);line-height:1.7;word-break:keep-all}
+
+/* 게임 무대 */
+#game{background:var(--stage);overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;outline:none}
+.scene{position:absolute;inset:0;transition:filter .7s ease}
+.scene-layer{position:absolute;inset:0;transition:opacity .6s ease}
+.scene-layer svg{display:block;width:100%;height:100%}
+.drift{animation:drift 24s linear infinite}
+@keyframes drift{to{transform:translateX(var(--w))}}
+.veil{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .7s ease;background:radial-gradient(ellipse at 50% 45%,rgba(255,252,244,0) 40%,rgba(255,252,244,.9) 100%)}
+.thought{position:absolute;z-index:4;top:84px;left:50%;transform:translateX(-50%);font-family:var(--hand);font-size:30px;line-height:1.1;color:var(--thought-ink);background:var(--thought-bg);border:2px dashed #B9AFC8;border-radius:999px;padding:4px 24px 6px;opacity:0;transition:opacity .5s;pointer-events:none;white-space:nowrap}
+#game.imagine .scene{filter:sepia(.5) saturate(.75) blur(2px) brightness(1.06)}
+#game.imagine .veil,#game.imagine .thought{opacity:1}
+#game.shake{animation:shake .45s ease}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+
+.chars{position:absolute;inset:0;pointer-events:none;z-index:3}
+.char{position:absolute;bottom:40px;height:min(64%,540px);aspect-ratio:3/4;transform:translateX(-50%);transition:opacity .35s ease,transform .35s ease,filter .25s ease,left .35s ease}
+.char svg{display:block;width:100%;height:100%;filter:drop-shadow(0 8px 12px rgba(0,0,0,.2))}
+.char.pos-center{left:50%}
+.char.pos-left{left:29%}
+.char.pos-right{left:71%}
+.char.entering{opacity:0;transform:translate(-50%,16px)}
+.char.leaving{opacity:0}
+.char.dim{filter:brightness(.7) saturate(.85)}
+
+.hud{position:absolute;z-index:5;top:12px;left:12px;right:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none}
+.stamp{background:var(--paper);color:var(--ink);border-radius:10px;padding:6px 14px 8px;box-shadow:0 3px 0 var(--shadow);transform:rotate(-1.5deg);max-width:62%}
+.stamp .when{font-family:var(--hand);font-size:30px;line-height:1}
+.stamp .day{color:var(--mint);margin-right:8px}
+.stamp .where{font-size:13px;color:var(--ink-soft);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cells{display:flex;background:var(--paper);border-top:1.5px solid var(--grid-strong);border-left:1.5px solid var(--grid-strong)}
+.cells i{display:block;width:16px;height:16px;border-right:1.5px solid var(--grid-strong);border-bottom:1.5px solid var(--grid-strong);transition:background .4s}
+.cells i.done{background:var(--mint)}
+
+.dialog{position:absolute;z-index:6;left:50%;bottom:14px;transform:translateX(-50%);width:min(900px,calc(100% - 20px));min-height:142px;padding:24px 26px 30px;border-radius:14px;background-color:var(--paper);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-position:0 15px;color:var(--ink);box-shadow:0 12px 34px rgba(0,0,0,.3)}
+.line{margin:0;font-size:19px;line-height:32px;min-height:64px;word-break:keep-all;overflow-wrap:anywhere}
+.dialog.narr .line{color:var(--ink-soft)}
+.nameplate{position:absolute;top:-18px;left:22px;font-family:var(--hand);font-size:27px;line-height:1;padding:5px 16px 7px;border-radius:8px;background:var(--mint);color:var(--on-mint);transform:rotate(-2deg);box-shadow:0 3px 0 rgba(0,0,0,.15)}
+.nameplate.me{background:var(--java);color:var(--paper)}
+.more{position:absolute;right:20px;bottom:12px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:9px solid var(--mint);animation:bob 1s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(3px)}}
+
+.phone{position:absolute;z-index:5;left:50%;top:76px;transform:translateX(-50%);width:min(330px,84vw);max-height:calc(100% - 270px);background:var(--phone-frame);border-radius:34px;padding:11px;box-shadow:0 22px 50px rgba(0,0,0,.45);display:flex}
+.ph-screen{background:var(--phone-bg);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;width:100%;min-height:0}
+.ph-head{padding:12px 16px;font-weight:700;font-size:15px;color:var(--phone-ink);border-bottom:1px solid var(--phone-line);flex:none}
+.ph-body{padding:12px;display:flex;flex-direction:column;gap:8px;overflow:hidden;flex:1;min-height:0}
+.ph-body.chat{justify-content:flex-end}
+.bub{max-width:84%;padding:9px 12px;border-radius:16px;font-size:14.5px;line-height:1.45;word-break:keep-all;overflow-wrap:anywhere;flex:none}
+.bub.them{background:var(--bubble);border:1px solid var(--phone-line);align-self:flex-start;border-top-left-radius:4px;color:var(--phone-ink)}
+.bub.me{background:var(--bubble-me);color:var(--bubble-me-ink);align-self:flex-end;border-top-right-radius:4px}
+.bub .from{display:block;font-size:12px;color:var(--phone-soft);margin-bottom:2px}
+.news{background:var(--bubble);border:1px solid var(--phone-line);border-radius:14px;padding:12px 13px;flex:none}
+.news .tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--tag);color:var(--tag-ink)}
+.news h4{margin:7px 0 4px;font-size:15px;line-height:1.4;color:var(--phone-ink);word-break:keep-all}
+.news p{margin:0;font-size:13px;line-height:1.55;color:var(--phone-soft);word-break:keep-all}
+
+.choice{position:absolute;inset:0;z-index:8;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;overflow-y:auto;gap:20px;padding:24px 16px;background:var(--veil);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);cursor:default}
+.choice .prompt{margin:auto 0 0;flex:none;font-family:var(--hand);font-size:clamp(32px,5.5vw,46px);line-height:1.15;color:#FFFFFF;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.4);word-break:keep-all}
+.opts{display:flex;flex-direction:column;gap:16px;width:min(640px,100%);margin-bottom:auto;flex:none}
+.opt{display:flex;gap:14px;align-items:flex-start;text-align:left;border:0;border-radius:3px;padding:18px 20px 20px;background:var(--note);color:var(--note-ink);font-family:var(--body);font-size:18px;line-height:1.6;cursor:pointer;box-shadow:0 6px 0 rgba(0,0,0,.2);transform:rotate(-.8deg);transition:transform .15s ease;word-break:keep-all}
+.opt:nth-child(2){background:var(--note-2);transform:rotate(.7deg)}
+.opt:hover{transform:rotate(0) translateY(-2px)}
+.opt:focus-visible{outline:3px solid #FFFFFF;outline-offset:4px}
+.opt .key{font-family:var(--hand);font-size:30px;line-height:1;color:#5A3A2E;flex:none;margin-top:-2px}
+
+.analyzing{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:var(--paper);cursor:default}
+.analyzing p{font-family:var(--hand);font-size:36px;margin:0;color:var(--ink)}
+.analyzing .cells i{width:24px;height:24px;animation:fillc .25s ease forwards}
+@keyframes fillc{to{background:var(--mint)}}
+
+@media (max-width:600px){
+  .line{font-size:17px;line-height:29px;min-height:58px}
+  .dialog{padding:22px 18px 26px;min-height:130px;background-image:repeating-linear-gradient(to bottom,transparent 0 28px,var(--rule) 28px 29px);background-position:0 15px}
+  .char{height:min(52%,430px)}
+  .char.pos-left{left:27%}
+  .char.pos-right{left:73%}
+  .stamp .when{font-size:26px}
+  .cells i{width:12px;height:12px}
+  .opt{font-size:16px;padding:15px 16px 17px}
+  .thought{top:92px;font-size:26px}
+}
+
+/* 가로로 눕힌 휴대폰처럼 세로가 짧은 화면 */
+@media (max-height:520px) and (orientation:landscape){
+  .hud{top:8px;left:10px;right:10px}
+  .stamp{padding:4px 12px 6px}
+  .stamp .when{font-size:24px}
+  .stamp .where{font-size:12px}
+  .cells i{width:12px;height:12px}
+  .char{height:80%;bottom:26px}
+  .char.pos-left{left:26%}
+  .char.pos-right{left:74%}
+  .dialog{bottom:8px;width:min(760px,calc(100% - 24px));min-height:96px;padding:16px 20px 18px;background-image:repeating-linear-gradient(to bottom,transparent 0 25px,var(--rule) 25px 26px);background-position:0 9px}
+  .line{font-size:16px;line-height:26px;min-height:52px}
+  .nameplate{font-size:22px;top:-15px;padding:4px 13px 6px}
+  .phone{top:46px;left:auto;right:14px;transform:none;width:min(300px,42vw);max-height:calc(100% - 172px);border-radius:26px;padding:8px}
+  .ph-screen{border-radius:19px}
+  .thought{top:54px;font-size:24px}
+  .choice{gap:12px;padding:14px 16px}
+  .choice .prompt{font-size:30px}
+  .opts{gap:10px;width:min(720px,100%)}
+  .opt{font-size:15.5px;line-height:1.5;padding:11px 16px 13px}
+  .opt .key{font-size:24px}
+}
+
+/* 결과 화면 */
+#result{overflow-y:auto;background:var(--paper-2);padding:28px 14px 56px}
+.report{width:min(780px,100%);margin:0 auto;background:var(--paper);border-radius:6px;box-shadow:0 14px 40px var(--shadow);padding:clamp(22px,5vw,52px)}
+.report .who{font-family:var(--hand);font-size:30px;color:var(--ink-soft);margin:0}
+.type-title{font-family:var(--hand);font-weight:400;word-break:keep-all;font-size:clamp(56px,12vw,92px);line-height:1;margin:6px 0 8px;color:var(--ink)}
+.type-tag{margin:0;font-size:18px;font-weight:700;color:var(--mint)}
+.ruler{margin:30px 0 10px}
+.ruler .ends{display:flex;justify-content:space-between;font-size:15px;color:var(--ink-soft);margin-bottom:8px}
+.ruler .ends b{font-family:var(--hand);font-weight:400;font-size:26px;color:var(--ink)}
+.ruler .bar{position:relative;height:36px;border:2px solid var(--ink);border-radius:4px;background-image:repeating-linear-gradient(90deg,var(--ink) 0 1.5px,transparent 1.5px 10%);background-size:100% 38%;background-repeat:no-repeat}
+.pin{position:absolute;top:50%;left:50%;width:34px;height:34px;margin:-17px 0 0 -17px;border-radius:50%;background:var(--mint);color:var(--on-mint);display:grid;place-items:center;font-size:14px;font-weight:700;box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--mint);transition:left 1.3s cubic-bezier(.2,.8,.2,1)}
+.score{margin:12px 0 0;font-size:15px;color:var(--ink-soft)}
+.desc{font-size:17px;line-height:1.9;margin:26px 0 0;word-break:keep-all}
+.aside{border-left:4px solid var(--mint);padding:2px 0 2px 16px;margin:24px 0 0}
+.aside h3{margin:0 0 4px;font-size:14px;font-weight:700;color:var(--ink-soft)}
+.aside .big{font-family:var(--hand);font-size:32px;line-height:1.1;margin:0 0 6px;color:var(--ink)}
+.aside p{margin:0;line-height:1.75;word-break:keep-all}
+.report h2{font-family:var(--hand);font-weight:400;font-size:38px;line-height:1.1;margin:46px 0 14px;color:var(--ink)}
+.tchart{display:grid;grid-template-columns:1fr 1fr;border-top:2px solid var(--ink)}
+.tchart>div{padding:16px 18px 6px}
+.tchart>div+div{border-left:2px solid var(--ink)}
+.tchart h3{margin:0 0 8px;font-family:var(--hand);font-weight:400;font-size:32px;line-height:1}
+.tchart p{margin:0 0 10px;line-height:1.75;font-size:15.5px;word-break:keep-all}
+.tchart .k{color:var(--ink-soft);font-size:14.5px}
+.review{list-style:none;margin:0;padding:0}
+.review li{display:grid;grid-template-columns:76px 1fr;gap:14px;padding:16px 0;border-top:1.5px dashed var(--grid-strong)}
+.r-time{font-family:var(--hand);font-size:26px;line-height:1.1;color:var(--ink-soft)}
+.r-time small{display:block;font-size:20px}
+.r-head{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px}
+.r-theme{font-weight:700}
+.chip{display:inline-block;font-size:12.5px;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.chip.D{background:var(--ink);color:var(--paper)}
+.chip.C{background:var(--mint);color:var(--on-mint)}
+.r-choice{margin:0 0 6px;padding:8px 12px;background:var(--mint-soft);border-radius:4px;line-height:1.6;word-break:keep-all}
+.r-why{margin:0;line-height:1.75;color:var(--ink-soft);font-size:15px;word-break:keep-all}
+.review details{margin-top:8px}
+.review summary{cursor:pointer;font-size:14px;color:var(--ink-soft);width:max-content}
+.review summary:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.review details[open] .r-choice{background:transparent;border:1.5px solid var(--grid-strong);margin-top:8px}
+.note{margin:34px 0 0;font-size:14px;line-height:1.75;color:var(--ink-soft);word-break:keep-all}
+.again{margin-top:26px;text-align:center}
+@media (max-width:620px){
+  .tchart{grid-template-columns:1fr}
+  .tchart>div+div{border-left:0;border-top:2px solid var(--ink)}
+  .review li{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .manuscript b{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <section id="title" class="screen sheet-bg" aria-label="시작 화면">
+    <div class="title-wrap">
+      <div class="ring" aria-hidden="true"></div>
+      <h1 class="sr">마감 D-1</h1>
+      <div class="manuscript" aria-hidden="true"><span><b style="animation-delay:.1s">마</b></span><span><b style="animation-delay:.35s">감</b></span><span></span><span><b style="animation-delay:.6s">D</b></span><span><b style="animation-delay:.75s">-</b></span><span><b style="animation-delay:.9s">1</b></span></div>
+      <p class="sub">새내기의 아주 긴 하루</p>
+      <p class="premise">꿈에 그리던 대학에 입학한 지 일주일. 첫 과제 마감까지 남은 시간은 딱 하루. 오늘 하루, 여러 장면에서 당신이라면 어떻게 할지 골라 주세요.</p>
+      <div class="namebox">
+        <label for="nm">이야기 속에서 불릴 이름</label>
+        <input id="nm" maxlength="8" placeholder="예: 하늘" autocomplete="off">
+        <button class="btn" id="startBtn" type="button">하루 시작하기</button>
+      </div>
+      <p class="hint">화면을 누르거나 스페이스바를 누르면 이야기가 넘어가요.<br>선택지는 숫자 1, 2 키로도 고를 수 있어요.</p>
+    </div>
+  </section>
+
+  <section id="game" class="screen" tabindex="-1" aria-label="게임 화면" hidden>
+    <div class="scene"></div>
+    <div class="veil"></div>
+    <div class="thought" aria-hidden="true">상상 중…</div>
+    <div class="chars"></div>
+    <div class="hud">
+      <div class="stamp"><div class="when"><span class="day"></span><span class="hm"></span></div><div class="where"></div></div>
+      <div class="cells" id="progress" role="img" aria-label="진행 0/10"></div>
+    </div>
+    <div class="phone" hidden></div>
+    <div class="dialog narr">
+      <div class="nameplate" hidden></div>
+      <p class="line" aria-hidden="true"></p>
+      <span class="more" hidden></span>
+    </div>
+    <div class="choice" hidden role="dialog" aria-modal="true" aria-labelledby="prompt">
+      <p class="prompt" id="prompt"></p>
+      <div class="opts"></div>
+    </div>
+    <div class="analyzing" hidden><p>어제 하루를 돌아보는 중…</p><div class="cells"></div></div>
+    <div class="sr" aria-live="polite" id="live"></div>
+  </section>
+
+  <section id="result" class="screen" aria-label="결과 화면" hidden></section>
+</div>
+<script>
+(() => {
+'use strict';
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (s, r = document) => r.querySelector(s);
+
+/* ---------- 이름과 조사 ---------- */
+let playerName = '새내기';
+const hasBatchim = w => {
+  const c = w.charCodeAt(w.length - 1);
+  if (!(c >= 0xAC00 && c <= 0xD7A3)) return false;
+  return (c - 0xAC00) % 28 !== 0;
+};
+const fill = s => s.replace(/\{name(?:\|(.)(.))?\}/g, (m, a, b) => a ? playerName + (hasBatchim(playerName) ? a : b) : playerName);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function shade(hex, amt) {
+  const n = parseInt(hex.slice(1), 16);
+  const f = v => Math.max(0, Math.min(255, Math.round(amt < 0 ? v * (1 + amt) : v + (255 - v) * amt)));
+  return '#' + [n >> 16, (n >> 8) & 255, n & 255].map(v => f(v).toString(16).padStart(2, '0')).join('');
+}
+
+/* ---------- 등장인물 ---------- */
+const CAST = {
+  jian:     { name: '지안', skin: '#F6D9C6', hair: '#3A2824', hairStyle: 'bob', shirt: '#F2C14E', outfit: 'hoodie', hatColor: '#6C7BD9' },
+  senior:   { name: '민재 선배', skin: '#EFC8AC', hair: '#1E1A1A', hairStyle: 'short', shirt: '#2F3E6B', outfit: 'jacket', glasses: true },
+  prof:     { name: '강 교수님', skin: '#F0CDB5', hair: '#BDB8B1', brow: '#8A847C', hairStyle: 'gray', shirt: '#4A4A55', outfit: 'suit', glasses: true },
+  stranger: { name: '낯선 학생', skin: '#F3D3C0', hair: '#5A3A2E', hairStyle: 'long', shirt: '#A9C6E8', outfit: 'cardigan' },
+  ta:       { name: '열람실 조교', skin: '#F1CDB6', hair: '#2E2626', hairStyle: 'bob', shirt: '#DCD6CB', outfit: 'lanyard' },
+  freshman: { name: '신입생', skin: '#EAC2A6', hair: '#262222', hairStyle: 'buzz', shirt: '#8DB57C', outfit: 'tee' }
+};
+
+function outfitSVG(c) {
+  const sh = shade(c.shirt, -0.18);
+  switch (c.outfit) {
+    case 'hoodie':
+      return `<path d="M96 302C104 272 130 282 150 300C170 282 196 272 204 302C190 320 170 324 150 314C130 324 110 320 96 302Z" fill="${sh}"/><path d="M140 312L137 352M160 312L163 352" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/><circle cx="137" cy="355" r="3.5" fill="#FFFFFF"/><circle cx="163" cy="355" r="3.5" fill="#FFFFFF"/>`;
+    case 'jacket':
+      return `<path d="M124 286L150 322L176 286Z" fill="#EDEDED"/><path d="M118 284L150 330L182 284" fill="none" stroke="#F4F4F4" stroke-width="8" stroke-linejoin="round"/><path d="M58 366L84 342M242 366L216 342" stroke="#F4F4F4" stroke-width="6"/><circle cx="212" cy="360" r="12" fill="#F4F4F4"/><circle cx="212" cy="360" r="6" fill="${c.shirt}"/>`;
+    case 'suit':
+      return `<path d="M122 286L150 352L178 286Z" fill="#F7F7F7"/><path d="M146 296L154 296L158 338L150 350L142 338Z" fill="#2F5D8C"/><path d="M122 286L150 352L108 332Z" fill="${sh}"/><path d="M178 286L150 352L192 332Z" fill="${sh}"/>`;
+    case 'cardigan':
+      return `<path d="M126 288Q150 304 174 288L166 400L134 400Z" fill="#FBFBFB"/><path d="M126 288L134 400M174 288L166 400" stroke="${sh}" stroke-width="5"/><circle cx="139" cy="340" r="3" fill="${sh}"/><circle cx="141" cy="370" r="3" fill="${sh}"/>`;
+    case 'lanyard':
+      return `<path d="M124 288Q150 306 176 288" stroke="${sh}" stroke-width="6" fill="none"/><path d="M130 292L146 350M170 292L154 350" stroke="#1E9C84" stroke-width="5"/><rect x="136" y="348" width="28" height="36" rx="3" fill="#FFFFFF" stroke="#C9C9C9"/><rect x="142" y="356" width="16" height="12" fill="#C8DCEB"/>`;
+    default:
+      return `<path d="M124 288Q150 306 176 288" stroke="${sh}" stroke-width="6" fill="none"/>`;
+  }
+}
+
+function hairSVG(style, H) {
+  switch (style) {
+    case 'bob':
+      return {
+        back: `<path d="M70 252C58 160 80 82 150 80C220 82 242 160 230 252Q214 262 198 252L102 252Q86 262 70 252Z" fill="${H}"/>`,
+        front: `<path d="M84 170C78 110 110 86 150 86C190 86 222 110 216 170C208 150 198 140 188 134C172 142 152 140 138 130C124 142 104 152 84 170Z" fill="${H}"/>`
+      };
+    case 'perm': {
+      let curls = '';
+      for (let a = 140; a <= 400; a += 16) {
+        const r = a * Math.PI / 180, x = 150 + 84 * Math.cos(r), y = 166 + 90 * Math.sin(r);
+        curls += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="23" fill="${H}"/><path d="M${(x - 9).toFixed(1)} ${y.toFixed(1)}a9 9 0 0 1 18 0" stroke="rgba(0,0,0,.25)" stroke-width="2.5" fill="none"/>`;
+      }
+      let fc = '';
+      for (let k = 0; k < 7; k++) {
+        const x = 92 + k * 19.3, y = k % 2 ? 137 : 131;
+        fc += `<circle cx="${x.toFixed(1)}" cy="${y}" r="15" fill="${H}"/><path d="M${(x - 6).toFixed(1)} ${y}a6 6 0 0 1 12 0" stroke="rgba(0,0,0,.22)" stroke-width="2" fill="none"/>`;
+      }
+      return {
+        back: `<ellipse cx="150" cy="160" rx="86" ry="84" fill="${H}"/>${curls}`,
+        front: `<path d="M86 140C90 100 120 86 150 86C180 86 210 100 214 140Z" fill="${H}"/>${fc}`
+      };
+    }
+    case 'short':
+      return {
+        back: `<ellipse cx="150" cy="140" rx="74" ry="68" fill="${H}"/>`,
+        front: `<path d="M82 160C84 104 120 82 160 84C198 88 222 112 218 160C204 136 182 122 160 122C136 124 106 138 82 160Z" fill="${H}"/>`
+      };
+    case 'gray':
+      return {
+        back: `<ellipse cx="150" cy="144" rx="72" ry="64" fill="${H}"/>`,
+        front: `<path d="M86 150C90 106 124 90 156 92C192 96 216 116 214 150C198 134 180 128 160 128C138 128 108 136 86 150Z" fill="${H}"/>`
+      };
+    case 'long':
+      return {
+        back: `<path d="M74 336C58 230 64 90 150 80C236 90 242 230 226 336Q150 350 74 336Z" fill="${H}"/>`,
+        front: `<path d="M84 178C80 112 110 86 150 86C190 86 220 112 216 178C206 142 182 114 152 110C122 114 96 142 84 178Z" fill="${H}"/>`
+      };
+    case 'buzz':
+    default:
+      return {
+        back: `<ellipse cx="150" cy="136" rx="70" ry="60" fill="${H}"/>`,
+        front: `<path d="M86 148C90 100 122 86 150 86C178 86 210 100 214 148C192 130 170 126 150 126C130 126 108 130 86 148Z" fill="${H}"/>`
+      };
+  }
+}
+
+function charSVG(sp) {
+  const c = CAST[sp.id], S = c.skin, K = '#2A2430';
+  const e = sp.expr || 'neutral';
+  const hair = hairSVG(sp.perm ? 'perm' : c.hairStyle, c.hair);
+  const brow = c.brow || c.hair;
+  const EY = 184, LX = 122, RX = 178;
+
+  let hat = '';
+  if (sp.hat) {
+    const hc = c.hatColor || '#6C7BD9', band = shade(hc, -0.2);
+    let ribs = '';
+    for (let x = 86; x <= 214; x += 12) ribs += `<line x1="${x}" y1="128" x2="${x}" y2="148" stroke="rgba(255,255,255,.22)" stroke-width="2"/>`;
+    hat = `<path d="M78 148C74 80 118 56 150 56C182 56 226 80 222 148Z" fill="${hc}"/><rect x="74" y="124" width="152" height="28" rx="13" fill="${band}"/>${ribs}<circle cx="150" cy="52" r="15" fill="${shade(hc, 0.3)}"/>`;
+  }
+
+  let brows;
+  if (e === 'sad' || e === 'teary' || e === 'tired') brows = `M110 159Q122 155 134 151M166 151Q178 155 190 159`;
+  else if (e === 'surprised') brows = `M110 151Q122 143 134 148M166 148Q178 143 190 151`;
+  else if (e === 'awkward') brows = `M110 157Q122 151 134 155M166 151Q178 147 190 153`;
+  else brows = `M110 157Q122 151 134 155M166 155Q178 151 190 157`;
+  const browSVG = `<path d="${brows}" stroke="${brow}" stroke-width="4.5" fill="none" stroke-linecap="round"/>`;
+
+  const dot = x => `<ellipse cx="${x}" cy="${EY}" rx="6.5" ry="8.5" fill="${K}"/><circle cx="${x + 2}" cy="${EY - 3}" r="2.2" fill="#FFFFFF"/>`;
+  const arc = x => `<path d="M${x - 10} ${EY + 2}Q${x} ${EY - 10} ${x + 10} ${EY + 2}" stroke="${K}" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+  const big = x => `<ellipse cx="${x}" cy="${EY}" rx="8.5" ry="10.5" fill="#FFFFFF" stroke="${K}" stroke-width="3"/><circle cx="${x}" cy="${EY + 1}" r="4.5" fill="${K}"/>`;
+  const tired = x => `<path d="M${x - 9} ${EY}L${x + 9} ${EY}" stroke="${K}" stroke-width="3.5" stroke-linecap="round"/><path d="M${x - 7} ${EY + 1}Q${x} ${EY + 9} ${x + 7} ${EY + 1}Z" fill="${K}"/><path d="M${x - 8} ${EY + 13}Q${x} ${EY + 17} ${x + 8} ${EY + 13}" stroke="rgba(90,60,90,.35)" stroke-width="2" fill="none"/>`;
+  let eyes;
+  if (e === 'smile' || e === 'happy') eyes = arc(LX) + arc(RX);
+  else if (e === 'surprised') eyes = big(LX) + big(RX);
+  else if (e === 'tired') eyes = tired(LX) + tired(RX);
+  else eyes = dot(LX) + dot(RX);
+
+  const line = d => `<path d="${d}" stroke="${K}" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+  const mouths = {
+    smile: line('M138 212Q150 223 162 212'),
+    happy: `<path d="M134 209Q150 236 166 209Z" fill="#8E3B46"/><ellipse cx="150" cy="223" rx="7" ry="4" fill="#E77A86"/>`,
+    neutral: line('M142 216L158 216'),
+    sad: line('M139 221Q150 211 161 221'),
+    teary: line('M139 221Q150 211 161 221'),
+    surprised: `<ellipse cx="150" cy="218" rx="7" ry="9" fill="#8E3B46"/>`,
+    awkward: line('M136 216q5 -4 10 0t10 0t10 0'),
+    tired: line('M142 217Q150 214 158 217')
+  };
+  const mouth = mouths[e] || mouths.neutral;
+  const blush = (e === 'smile' || e === 'happy' || e === 'awkward')
+    ? `<ellipse cx="106" cy="206" rx="12" ry="6" fill="#F2A0A6" opacity=".5"/><ellipse cx="194" cy="206" rx="12" ry="6" fill="#F2A0A6" opacity=".5"/>` : '';
+  let extra = '';
+  if (e === 'awkward') extra += `<path d="M216 132Q207 150 216 155Q225 150 216 132Z" fill="#A9DBF4" stroke="#5FA9D6" stroke-width="1.5"/>`;
+  if (e === 'teary') extra += [LX, RX].map(x => `<path d="M${x + 4} ${EY + 10}Q${x - 1} ${EY + 22} ${x + 4} ${EY + 26}Q${x + 9} ${EY + 22} ${x + 4} ${EY + 10}Z" fill="#A9DBF4"/>`).join('');
+  const glasses = c.glasses
+    ? `<g fill="rgba(255,255,255,.15)" stroke="#2B2B2B" stroke-width="3"><circle cx="${LX}" cy="${EY}" r="18"/><circle cx="${RX}" cy="${EY}" r="18"/></g><path d="M140 182Q150 176 160 182M104 180L88 176M196 180L212 176" stroke="#2B2B2B" stroke-width="3" fill="none"/>` : '';
+
+  return `<svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+${hair.back}
+<path d="M128 220L172 220L174 292Q150 304 126 292Z" fill="${S}"/>
+<path d="M128 236Q150 254 172 236L172 248Q150 266 128 248Z" fill="rgba(0,0,0,.08)"/>
+<path d="M28 400C34 322 78 292 122 284L178 284C222 292 266 322 272 400Z" fill="${c.shirt}"/>
+${outfitSVG(c)}
+<ellipse cx="85" cy="186" rx="10" ry="14" fill="${S}"/><ellipse cx="215" cy="186" rx="10" ry="14" fill="${S}"/>
+<ellipse cx="150" cy="172" rx="66" ry="76" fill="${S}"/>
+${sp.hat ? hat : hair.front}
+${browSVG}${eyes}
+<path d="M150 193Q147 201 152 203" stroke="rgba(0,0,0,.2)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+${mouth}${blush}${extra}${glasses}
+</svg>`;
+}
+
+/* ---------- 배경 ---------- */
+const SV = inner => `<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${inner}</svg>`;
+const HAND = `font-family="'Nanum Pen Script',cursive"`;
+
+function sceneLecture(next) {
+  const lines = next ? ['대학 글쓰기', '오늘: 과제 제출', '주제: 나를 만든 하루'] : ['대학 글쓰기', '과제: A4 자필 3장', '마감: 내일 오전 9시 수업'];
+  const win = x => `<rect x="${x}" y="64" width="130" height="200" fill="${next ? '#D2ECF6' : '#BFE0EE'}"/><circle cx="${x + 40}" cy="252" r="44" fill="#9CC98A"/><circle cx="${x + 100}" cy="246" r="38" fill="#88BE78"/><rect x="${x}" y="64" width="130" height="200" fill="none" stroke="#FFFFFF" stroke-width="8"/><line x1="${x + 65}" y1="64" x2="${x + 65}" y2="264" stroke="#FFFFFF" stroke-width="6"/><line x1="${x}" y1="160" x2="${x + 130}" y2="160" stroke="#FFFFFF" stroke-width="6"/>`;
+  let desks = '';
+  [60, 240, 420, 600].forEach(x => {
+    desks += `<rect x="${x}" y="296" width="140" height="12" rx="2" fill="#A27E5A"/><rect x="${x + 10}" y="308" width="7" height="34" fill="#7D5F42"/><rect x="${x + 123}" y="308" width="7" height="34" fill="#7D5F42"/>`;
+  });
+  return SV(`<defs><linearGradient id="g-lec" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F1EADB"/><stop offset="1" stop-color="#E4D9C3"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#g-lec)"/><rect width="800" height="24" fill="#D5C9AF"/>
+${win(24)}${win(646)}
+<polygon points="24,264 154,264 426,700 108,700" fill="#FFF6D8" opacity=".35"/>
+<rect x="190" y="56" width="420" height="206" rx="6" fill="#2F5546" stroke="#8B6B4B" stroke-width="10"/>
+<g ${HAND} fill="#EAF2EA" font-size="36">${lines.map((t, k) => `<text x="222" y="${112 + k * 52}">${t}</text>`).join('')}</g>
+<path d="M222 124Q290 118 352 124" stroke="#EAF2EA" stroke-width="2" fill="none" opacity=".6"/>
+<rect x="190" y="264" width="420" height="8" fill="#7A5A3D"/><rect x="250" y="261" width="26" height="5" rx="2" fill="#FFFFFF"/>
+<rect y="330" width="800" height="120" fill="#C8B190"/><rect y="328" width="800" height="5" fill="#B09774"/>
+${desks}`);
+}
+
+function sceneCafe() {
+  let lamps = '';
+  [470, 600, 730].forEach(x => {
+    lamps += `<line x1="${x}" y1="28" x2="${x}" y2="66" stroke="#3A2A23" stroke-width="2"/><circle cx="${x}" cy="92" r="48" fill="#FFE7A0" opacity=".22"/><path d="M${x - 26} 88Q${x} 54 ${x + 26} 88Z" fill="#2F5D50"/><circle cx="${x}" cy="90" r="6" fill="#FFF3C4"/>`;
+  });
+  let bwin = '';
+  for (let r = 0; r < 3; r++) for (let c = 0; c < 3; c++) bwin += `<rect x="${162 + c * 38}" y="${122 + r * 34}" width="22" height="22" fill="#BFD8E2"/>`;
+  let pl = '';
+  for (let y = 334; y < 420; y += 12) pl += `<line x1="102" y1="${y}" x2="238" y2="${y}" stroke="#D9E3EF" stroke-width="1.5"/>`;
+  return SV(`<rect width="800" height="450" fill="#EAD6BF"/><rect width="800" height="30" fill="#5B3A29"/>
+<rect x="30" y="58" width="370" height="232" fill="#CFE7EF"/>
+<rect x="150" y="110" width="120" height="120" fill="#E8D3C6"/>${bwin}
+<rect x="30" y="226" width="370" height="64" fill="#B8B0A3"/>
+<circle cx="80" cy="210" r="42" fill="#8DBF7E"/><circle cx="330" cy="200" r="50" fill="#7FB46F"/><rect x="76" y="226" width="8" height="30" fill="#6B4E37"/><rect x="326" y="226" width="8" height="30" fill="#6B4E37"/>
+<rect x="30" y="58" width="370" height="232" fill="none" stroke="#4A2F22" stroke-width="10"/><line x1="215" y1="58" x2="215" y2="290" stroke="#4A2F22" stroke-width="8"/>
+<text x="58" y="104" ${HAND} font-size="40" fill="#FFFFFF" opacity=".85">모퉁이</text>
+${lamps}
+<rect x="440" y="120" width="320" height="150" rx="8" fill="#3A2A23"/>
+<g ${HAND} fill="#F3E9DC"><text x="466" y="160" font-size="30">오늘의 추천</text><text x="466" y="202" font-size="26">민트자바칩 프라푸치노</text><text x="466" y="240" font-size="26">아이스 아메리카노</text></g>
+<rect y="300" width="800" height="150" fill="#C69A6C"/><rect y="296" width="800" height="8" fill="#DDB283"/>
+<g transform="rotate(-5 170 370)"><rect x="90" y="318" width="160" height="110" fill="#FFFFFF"/>${pl}<path d="M104 330q8 -6 16 0t16 0t16 0t16 0t16 0" stroke="#3B4A6B" stroke-width="2" fill="none"/></g>
+<rect x="420" y="332" width="90" height="7" rx="3" fill="#2B2E4A" transform="rotate(-18 465 335)"/>
+<g transform="translate(680 0)">
+<path d="M-30 236L30 236L22 322L-22 322Z" fill="#A8E5CF"/>
+<g fill="#4B2E25"><circle cx="-12" cy="260" r="3"/><circle cx="8" cy="272" r="3.5"/><circle cx="-4" cy="292" r="3"/><circle cx="14" cy="300" r="3"/><circle cx="-14" cy="306" r="2.5"/><circle cx="2" cy="248" r="2.5"/></g>
+<path d="M-30 236L30 236L22 322L-22 322Z" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="2"/>
+<path d="M-34 236Q0 194 34 236Z" fill="#FFFFFF" opacity=".92"/>
+<circle cx="-10" cy="224" r="12" fill="#FFFFFF"/><circle cx="8" cy="218" r="14" fill="#FFFFFF"/><circle cx="0" cy="206" r="10" fill="#FFFFFF"/>
+<path d="M-14 214q6 6 12 0t12 0" stroke="#4B2E25" stroke-width="3" fill="none"/>
+<rect x="4" y="150" width="8" height="70" rx="3" fill="#1E9C84" transform="rotate(12 8 200)"/>
+</g>`);
+}
+
+function sceneStreet() {
+  let win = '';
+  [[0, 150, 90, 200], [84, 112, 72, 238], [232, 168, 96, 182], [322, 126, 80, 224]].forEach(([x, y, w, h], k) => {
+    for (let yy = y + 14; yy < y + h - 20; yy += 24) for (let xx = x + 10; xx < x + w - 12; xx += 20) if ((xx + yy + k) % 3 === 0) win += `<rect x="${xx}" y="${yy}" width="9" height="12" fill="#FFD98E" opacity=".85"/>`;
+  });
+  let goods = '';
+  for (let k = 0; k < 7; k++) goods += `<rect x="${530 + k * 22}" y="${300 - (k % 3) * 6}" width="14" height="${26 + (k % 3) * 6}" fill="${['#E9C46A', '#E76F51', '#2A9D8F', '#F4A261'][k % 4]}"/>`;
+  return SV(`<defs><linearGradient id="g-st" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7C6CB0"/><stop offset=".55" stop-color="#EE9C7D"/><stop offset="1" stop-color="#F7D392"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#g-st)"/>
+<circle cx="170" cy="236" r="44" fill="#FFE3A3" opacity=".9"/>
+<g fill="#6A5683"><rect x="0" y="150" width="90" height="200"/><rect x="84" y="112" width="72" height="238"/><rect x="232" y="168" width="96" height="182"/><rect x="322" y="126" width="80" height="224"/></g>${win}
+<rect x="500" y="168" width="300" height="182" fill="#F3F1EC"/><rect x="500" y="168" width="300" height="42" fill="#1E9C84"/>
+<text x="520" y="200" ${HAND} font-size="32" fill="#FFFFFF">편의점 24</text>
+<rect x="518" y="226" width="172" height="110" fill="#CFE6EC"/><rect x="518" y="290" width="172" height="4" fill="#9EBFC9"/>${goods}
+<rect x="704" y="222" width="76" height="128" fill="#BFDCE4" stroke="#9EC2CC" stroke-width="3"/>
+<rect x="414" y="212" width="78" height="60" fill="#FFFFFF" stroke="#E2D6C3"/><circle cx="453" cy="244" r="15" fill="#D9A46A"/><ellipse cx="441" cy="234" rx="6" ry="9" fill="#B07A45"/><ellipse cx="465" cy="234" rx="6" ry="9" fill="#B07A45"/><circle cx="448" cy="242" r="2" fill="#2A2430"/><circle cx="458" cy="242" r="2" fill="#2A2430"/><ellipse cx="453" cy="249" rx="3" ry="2" fill="#2A2430"/>
+<rect x="420" y="278" width="66" height="70" rx="4" fill="#F6E36B" stroke="#BE9F2C" stroke-width="2"/><rect x="438" y="285" width="30" height="5" rx="2" fill="#5A3A2E"/>
+<path d="M453 322C440 312 442 300 450 302C452 302 453 305 453 306C453 305 454 302 456 302C464 300 466 312 453 322Z" fill="#E05A5A"/>
+<text x="453" y="340" text-anchor="middle" font-size="11" fill="#5A3A2E" font-family="'Gowun Dodum',sans-serif">사료 모금함</text>
+<rect y="348" width="800" height="102" fill="#D8C7B0"/><rect y="344" width="800" height="6" fill="#BBA88D"/>
+<rect x="376" y="150" width="6" height="200" fill="#4B4258"/><path d="M362 152L396 152L388 140L370 140Z" fill="#4B4258"/><circle cx="379" cy="158" r="18" fill="#FFE7A6" opacity=".55"/>
+<g transform="rotate(-12 300 338)"><rect x="268" y="324" width="64" height="30" rx="2" fill="#E9C66A" stroke="#B48C35"/><circle cx="286" cy="339" r="8" fill="#D2A54A"/><text x="298" y="344" font-size="12" fill="#6E5320" font-family="sans-serif">50000</text></g>`);
+}
+
+function sceneBus() {
+  let city = '', x = 0, k = 0;
+  const hs = [96, 140, 112, 168, 84, 128, 152, 104, 160, 120];
+  while (x < 820) {
+    const w = 56 + ((k * 37) % 48), h = hs[k % 10];
+    city += `<rect x="${x}" y="${262 - h}" width="${w}" height="${h}" fill="${k % 2 ? '#4B4673' : '#585183'}"/>`;
+    for (let wy = 262 - h + 14; wy < 248; wy += 22) for (let wx = x + 10; wx < x + w - 12; wx += 18) if ((wx + wy + k) % 3 === 0) city += `<rect x="${wx}" y="${wy}" width="8" height="10" fill="#FFD98E" opacity=".85"/>`;
+    x += w + 8; k++;
+  }
+  const W = x;
+  let straps = '';
+  for (let sx = 90; sx < 800; sx += 125) straps += `<line x1="${sx}" y1="36" x2="${sx}" y2="72" stroke="#7D8696" stroke-width="3"/><circle cx="${sx}" cy="83" r="11" fill="none" stroke="#E8C547" stroke-width="4"/>`;
+  const seats = [40, 250, 460, 670];
+  return SV(`<defs><linearGradient id="g-bus" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#776DAF"/><stop offset="1" stop-color="#F3B285"/></linearGradient><clipPath id="c-bus"><rect x="0" y="52" width="800" height="210"/></clipPath></defs>
+<rect width="800" height="450" fill="#3E4759"/>
+<rect x="0" y="52" width="800" height="210" fill="url(#g-bus)"/>
+<g clip-path="url(#c-bus)"><g class="drift" style="--w:-${W}px"><g>${city}</g><g transform="translate(${W} 0)">${city}</g></g></g>
+<g fill="#2B3241">${[0, 200, 400, 600, 800].map(px => `<rect x="${px - 10}" y="52" width="20" height="210"/>`).join('')}</g>
+<rect y="46" width="800" height="8" fill="#2B3241"/><rect y="260" width="800" height="12" fill="#2B3241"/>
+<rect y="28" width="800" height="8" fill="#C5CBD3"/>${straps}
+<g fill="#3B6EA8">${seats.map(sx => `<rect x="${sx}" y="284" width="150" height="110" rx="16"/>`).join('')}</g>
+<g fill="#2F5C8E">${seats.map(sx => `<rect x="${sx}" y="284" width="150" height="16" rx="8"/>`).join('')}</g>
+<rect y="392" width="800" height="58" fill="#2A2F3A"/>`);
+}
+
+function sceneBbq() {
+  let t = '';
+  [130, 400, 670].forEach(x => {
+    if (x !== 400) t += `<rect x="${x - 13}" y="0" width="26" height="168" fill="#C3C9D0"/><rect x="${x - 6}" y="0" width="5" height="168" fill="#E4E8EC"/><path d="M${x - 56} 214L${x + 56} 214L${x + 18} 166L${x - 18} 166Z" fill="#AEB5BE"/>`;
+    t += `<path d="M${x - 20} 272C${x - 30} 252 ${x - 6} 242 ${x - 14} 224M${x + 12} 272C${x + 2} 250 ${x + 26} 240 ${x + 16} 222" stroke="#FFFFFF" stroke-opacity=".4" stroke-width="5" fill="none" stroke-linecap="round"/>
+<ellipse cx="${x}" cy="302" rx="112" ry="26" fill="#3B2B24"/><ellipse cx="${x}" cy="294" rx="48" ry="13" fill="#262626" stroke="#7D7D7D" stroke-width="3"/>
+<g fill="#E6A3A0"><rect x="${x - 30}" y="286" width="20" height="9" rx="3"/><rect x="${x - 4}" y="288" width="22" height="9" rx="3"/><rect x="${x + 20}" y="285" width="16" height="8" rx="3"/></g>
+<ellipse cx="${x - 80}" cy="296" rx="18" ry="7" fill="#7DBB62"/><rect x="${x + 66}" y="272" width="14" height="24" rx="3" fill="#D94141"/><rect x="${x + 66}" y="272" width="14" height="4" fill="#E8E8E8"/>`;
+  });
+  return SV(`<defs><linearGradient id="g-bbq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7CF92"/><stop offset="1" stop-color="#EAA067"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#g-bbq)"/>
+<rect y="236" width="800" height="214" fill="#8A5636"/><rect y="232" width="800" height="8" fill="#6E4128"/>
+<path d="M210 40Q400 60 590 40" stroke="#5A3A2E" stroke-width="2" fill="none"/>
+<rect x="236" y="46" width="328" height="58" rx="4" fill="#FFFDF6" stroke="#1E9C84" stroke-width="3"/>
+<text x="400" y="86" text-anchor="middle" ${HAND} font-size="34" fill="#5A3A2E">환영해요, 새내기 여러분!</text>
+${t}
+<rect y="330" width="800" height="120" fill="#5E3722"/>`);
+}
+
+function sceneLibrary() {
+  let w = '';
+  [60, 330, 600].forEach(x => {
+    w += `<rect x="${x}" y="40" width="140" height="170" fill="#121935"/>`;
+    [[20, 30], [90, 60], [50, 120], [115, 140], [30, 90]].forEach(([dx, dy]) => { w += `<circle cx="${x + dx}" cy="${40 + dy}" r="1.5" fill="#FFFFFF" opacity=".8"/>`; });
+    w += `<rect x="${x}" y="40" width="140" height="170" fill="none" stroke="#3B4869" stroke-width="6"/><line x1="${x + 70}" y1="40" x2="${x + 70}" y2="210" stroke="#3B4869" stroke-width="4"/>`;
+  });
+  let shelves = '';
+  const bc = ['#B5654B', '#5A7FA8', '#C9A85B', '#6E9C77', '#8D6AA8', '#C47A8A'];
+  [215, 485].forEach(x => {
+    shelves += `<rect x="${x}" y="50" width="100" height="170" fill="#3A3328"/>`;
+    [92, 134, 176, 218].forEach((sy, r) => {
+      shelves += `<rect x="${x}" y="${sy}" width="100" height="4" fill="#584C3B"/>`;
+      for (let b = 0; b < 7; b++) shelves += `<rect x="${x + 6 + b * 13}" y="${sy - 34 + ((b + r) % 3) * 3}" width="10" height="${34 - ((b + r) % 3) * 3}" fill="${bc[(b + r) % 6]}" opacity=".85"/>`;
+    });
+  });
+  let desk = '';
+  for (let x = 0; x <= 800; x += 160) desk += `<rect x="${x - 3}" y="220" width="6" height="50" fill="#55638A"/>`;
+  for (let x = 80; x < 800; x += 160) desk += `<ellipse cx="${x}" cy="262" rx="62" ry="26" fill="#FFE6A6" opacity=".2"/><rect x="${x - 2}" y="238" width="4" height="30" fill="#9A9AB0"/><path d="M${x - 22} 240L${x + 22} 240L${x + 12} 224L${x - 12} 224Z" fill="#E8E1C9"/>`;
+  return SV(`<rect width="800" height="450" fill="#26304A"/>${w}
+<circle cx="400" cy="96" r="18" fill="#F4EDC9"/><circle cx="409" cy="90" r="16" fill="#121935"/>
+${shelves}
+<rect y="286" width="800" height="164" fill="#1D2438"/>
+${desk}
+<rect y="268" width="800" height="20" fill="#7B6148"/>`);
+}
+
+function sceneCrosswalk() {
+  let stars = '';
+  [[60, 40], [150, 80], [260, 30], [520, 60], [700, 36], [760, 90], [380, 50]].forEach(([x, y]) => { stars += `<circle cx="${x}" cy="${y}" r="1.6" fill="#FFFFFF" opacity=".8"/>`; });
+  let bld = '';
+  [[0, 110, 120], [100, 90, 150], [200, 120, 100], [600, 110, 140], [700, 100, 120]].forEach(([x, w, h]) => {
+    bld += `<rect x="${x}" y="${250 - h}" width="${w}" height="${h}" fill="#1A2042"/>`;
+    for (let yy = 250 - h + 12; yy < 236; yy += 20) for (let xx = x + 10; xx < x + w - 12; xx += 20) if (((xx * 7 + yy * 3) % 5) === 0) bld += `<rect x="${xx}" y="${yy}" width="9" height="11" fill="#F6D27A" opacity=".85"/>`;
+  });
+  let zebra = '';
+  for (let k = 0; k < 8; k++) {
+    const xb = 40 + k * 100, xt = 400 + ((xb + 28) - 400) * 0.55;
+    const s = 616 / 166, xl = (xt - 16) + (xb - (xt - 16)) * s, xr = (xt + 16) + ((xb + 56) - (xt + 16)) * s;
+    zebra += `<polygon points="${xl.toFixed(1)},900 ${xr.toFixed(1)},900 ${(xt + 16).toFixed(1)},284 ${(xt - 16).toFixed(1)},284" fill="#E9E9EE" opacity=".85"/>`;
+  }
+  return SV(`<defs><linearGradient id="g-cw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E1430"/><stop offset="1" stop-color="#2A3462"/></linearGradient><radialGradient id="g-lamp"><stop offset="0" stop-color="#FFE7A6" stop-opacity=".55"/><stop offset="1" stop-color="#FFE7A6" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="450" fill="url(#g-cw)"/>${stars}${bld}
+<rect y="248" width="800" height="26" fill="#3A3F58"/>
+<rect x="560" y="176" width="170" height="8" fill="#5D6688"/><rect x="566" y="184" width="6" height="66" fill="#5D6688"/><rect x="718" y="184" width="6" height="66" fill="#5D6688"/><rect x="574" y="188" width="140" height="56" fill="#A9C1E6" opacity=".18"/>
+<rect x="380" y="168" width="300" height="90" rx="12" fill="#2E9C7E"/>
+<rect x="394" y="180" width="236" height="36" rx="4" fill="#FCE9A8"/>
+<g stroke="#2E9C7E" stroke-width="6"><line x1="452" y1="180" x2="452" y2="216"/><line x1="512" y1="180" x2="512" y2="216"/><line x1="572" y1="180" x2="572" y2="216"/></g>
+<rect x="640" y="178" width="30" height="64" rx="3" fill="#BFE3D6" opacity=".7"/>
+<rect x="392" y="226" width="80" height="20" rx="3" fill="#111111"/><text x="432" y="241" text-anchor="middle" font-size="13" fill="#FF9F43" font-family="'Gowun Dodum',sans-serif">막차</text>
+<circle cx="440" cy="258" r="14" fill="#111111"/><circle cx="620" cy="258" r="14" fill="#111111"/>
+<circle cx="676" cy="238" r="26" fill="#FFF6C8" opacity=".25"/><circle cx="676" cy="238" r="6" fill="#FFF6C8"/>
+<rect y="272" width="800" height="178" fill="#24252E"/>
+${zebra}
+<rect x="296" y="120" width="6" height="210" fill="#3B3F52"/><path d="M286 122L318 122L312 112L292 112Z" fill="#3B3F52"/><circle cx="302" cy="134" r="92" fill="url(#g-lamp)"/>
+<rect x="146" y="180" width="8" height="160" fill="#4A4D5E"/>
+<rect x="126" y="96" width="48" height="96" rx="5" fill="#15161B" stroke="#33364A" stroke-width="2"/>
+<circle cx="150" cy="124" r="38" fill="#FF3B3B" opacity=".22"/>
+<g fill="#FF4D4D"><circle cx="150" cy="110" r="4.5"/><rect x="145" y="116" width="10" height="16" rx="3"/><rect x="145.5" y="131" width="3.5" height="10"/><rect x="151" y="131" width="3.5" height="10"/></g>
+<g fill="#1F3D2C"><circle cx="150" cy="156" r="4.5"/><path d="M146 162L154 162L158 182L152 182L150 172L148 182L142 182Z"/></g>`);
+}
+
+function sceneRoom() {
+  let city = '';
+  for (let x = 478; x < 704; x += 16) city += `<rect x="${x}" y="${212 - ((x * 3) % 22)}" width="12" height="${20 + ((x * 3) % 22)}" fill="#222A55"/>`;
+  return SV(`<rect width="800" height="450" fill="#3A3858"/>
+<rect x="470" y="56" width="240" height="176" fill="#182046"/>
+<circle cx="510" cy="86" r="1.5" fill="#FFFFFF"/><circle cx="560" cy="120" r="1.5" fill="#FFFFFF"/><circle cx="600" cy="74" r="1.5" fill="#FFFFFF"/><circle cx="690" cy="150" r="1.5" fill="#FFFFFF"/>
+<circle cx="650" cy="104" r="22" fill="#F6EFC8"/><circle cx="660" cy="98" r="20" fill="#182046"/>
+${city}
+<rect x="470" y="56" width="240" height="176" fill="none" stroke="#5D5A84" stroke-width="8"/><line x1="590" y1="56" x2="590" y2="232" stroke="#5D5A84" stroke-width="6"/>
+<rect x="440" y="42" width="300" height="6" rx="3" fill="#8E86B0"/>
+<path d="M448 46Q466 140 452 248L484 248Q476 140 490 46Z" fill="#7B69A8"/><path d="M732 46Q714 140 728 248L696 248Q704 140 690 46Z" fill="#7B69A8"/>
+<g transform="rotate(-3 140 130)"><rect x="96" y="70" width="96" height="124" fill="#F2C14E"/><circle cx="144" cy="118" r="26" fill="#1E9C84"/><rect x="112" y="156" width="64" height="8" fill="#5A3A2E"/><rect x="120" y="170" width="48" height="6" fill="#5A3A2E" opacity=".6"/></g>
+<rect y="330" width="800" height="120" fill="#2B2944"/>
+<circle cx="255" cy="205" r="80" fill="#FFE7A6" opacity=".16"/>
+<rect x="30" y="250" width="300" height="14" fill="#8C6B4F"/><rect x="44" y="264" width="10" height="70" fill="#6E533D"/><rect x="306" y="264" width="10" height="70" fill="#6E533D"/>
+<path d="M282 250L288 190L252 168" stroke="#CFCBE0" stroke-width="5" fill="none"/><path d="M232 160L262 150L270 178Z" fill="#CFCBE0"/>
+<rect x="80" y="238" width="110" height="12" fill="#FFFFFF"/><rect x="86" y="232" width="104" height="8" fill="#F1F1F1"/><rect x="200" y="240" width="70" height="10" fill="#1E9C84" opacity=".85"/>
+<rect x="420" y="270" width="380" height="72" rx="8" fill="#E6E2F2"/><path d="M500 262Q650 240 800 262L800 342L500 342Z" fill="#8FB3DE"/><rect x="430" y="250" width="84" height="32" rx="12" fill="#FFFFFF"/>`);
+}
+
+/* 세로 화면에서도 비율이 맞도록 위(천장·하늘)와 아래(바닥)를 이어 그림 */
+function ext(svg, top, bottom) {
+  return svg.replace('aria-hidden="true">', `aria-hidden="true"><rect x="-400" y="-1400" width="1600" height="1400" fill="${top}"/><rect x="-400" y="450" width="1600" height="1400" fill="${bottom}"/>`);
+}
+const SCENES = {
+  lecture: () => ext(sceneLecture(false), '#EEE8DA', '#C8B190'),
+  lecture2: () => ext(sceneLecture(true), '#EEE8DA', '#C8B190'),
+  cafe: () => ext(sceneCafe(), '#5B3A29', '#C69A6C'),
+  street: () => ext(sceneStreet(), '#7C6CB0', '#D8C7B0'),
+  bus: () => ext(sceneBus(), '#3E4759', '#2A2F3A'),
+  bbq: () => ext(sceneBbq(), '#F7CF92', '#5E3722'),
+  library: () => ext(sceneLibrary(), '#26304A', '#1D2438'),
+  crosswalk: () => ext(sceneCrosswalk(), '#0E1430', '#24252E'),
+  room: () => ext(sceneRoom(), '#3A3858', '#2B2944')
+};
+
+/* ---------- 대본 ---------- */
+const ch = (id, expr = 'neutral', pos = 'center', extra = {}) => Object.assign({ id, expr, pos }, extra);
+const jH = (expr, pos = 'center') => ch('jian', expr, pos, { hat: true });
+const jP = (expr, pos = 'center') => ch('jian', expr, pos, { perm: true });
+
+const NEWS = {
+  kind: 'news', items: [
+    { tag: '화제', title: '인기 인플루언서, 소아암 어린이들에게 1억 원 기부', body: '구설에 오른 뒤 “솔직히 이미지 회복을 위한 기부였다”고 털어놓은 영상도 함께 화제다. 기부금은 아이 수십 명의 치료비로 쓰인다.' },
+    { tag: '훈훈', title: '고3 수험생, 알바비 모은 30만 원 몰래 기부', body: '“아픈 친구들이 생각나서요. 이름은 밝히고 싶지 않았어요.” 담임 선생님이 우연히 알게 되면서 알려졌다.' }
+  ]
+};
+const MSG1 = [
+  { from: 'them', text: '{name|아야} 자??' },
+  { from: 'them', text: '우리 강아지 콩이가 갑자기 토하고 축 처졌어ㅠㅠ 아침 일찍 동물병원 가 봐야 할 것 같아' }
+];
+const MSG2 = MSG1.concat([
+  { from: 'them', text: '병원 들렀다 가면 9시 반쯤 도착할 듯… 근데 출석 부를 때 없으면 결석이고, 결석하면 과제 0점이잖아ㅠㅠ' },
+  { from: 'them', text: '내 이름 부르면 대신 “네” 해 줄 수 있어? 교수님 명단만 보고 부르시잖아. 과제는 도착하자마자 낼게!' }
+]);
+const GROUP = {
+  kind: 'chat', with: '새내기 단톡방 (32)', items: [
+    { from: 'them', name: '동기 1', text: '제발 아무도 손 들지 마ㅠㅠ' },
+    { from: 'them', name: '동기 2', text: '나 한 장도 못 썼어 살려 줘' },
+    { from: 'them', name: '동기 3', text: '우리 다 같이 살자…' }
+  ]
+};
+
+const SCRIPT = [
+  // 프롤로그
+  { scene: 'lecture', day: 'D-1', time: '10:00', place: '인문관 304호', chars: [], text: '꿈에 그리던 대학에 입학한 지 딱 일주일.' },
+  { text: '아직 캠퍼스 지도도 헷갈리지만, 오늘은 드디어 첫 과제가 나오는 날이다.' },
+  { chars: [ch('prof', 'neutral')], who: '강 교수님', text: '자, 첫 과제입니다. 주제는 ‘나를 만든 하루’. A4 용지에 손으로 직접, 세 장 써 오세요.' },
+  { who: '강 교수님', text: '제출은 내일 오전 9시 수업 시간에 받습니다. 출석 부를 때 없으면 결석이고, 결석하면 과제도 0점이에요.' },
+  { chars: [ch('prof', 'smile')], who: '강 교수님', text: '봐주는 거 없어요.' },
+  { chars: [], text: '강의실 여기저기서 낮은 탄식이 터져 나왔다. 손으로… 세 장… 요즘 세상에?' },
+  { chars: [jH('happy')], who: '지안', text: '{name|아야}! 우리 같이 과제 하자. 정문 앞에 새로 생긴 카페 있잖아, 거기 어때?' },
+  { who: '{name}', text: '좋아! 거기 민트자바칩프라푸치노가 그렇게 맛있대.' },
+  { chars: [jH('smile')], who: '지안', text: '역시 민초파. 이따 2시에 만나!' },
+
+  // 1. 카페
+  { scene: 'cafe', time: '14:00', place: '정문 앞 카페 「모퉁이」', chars: [jH('neutral')], text: '창가 자리. 사각사각, 펜 굴러가는 소리만 들린다.' },
+  { text: '옆 테이블의 꼬마 하나가 신이 나서 카페 안을 뛰어다니고 있다.' },
+  { chars: [], who: '{name}', text: '(벌써 한 장 반… 손목이 아프다. 잠깐 화장실 좀 다녀와야지.)' },
+  { fx: 'imagine', text: '화장실로 걸어가는 길, 문득 불길한 상상이 머릿속을 스친다.' },
+  { text: '만약 자리로 돌아갔는데… 이런 일이 벌어져 있다면?' },
+  { choice: 'q1' },
+  { fx: '', chars: [jH('smile')], text: '…정신을 차리고 자리로 돌아왔다.' },
+  { who: '지안', text: '왔어? 나 이제 두 장째 쓰는 중!' },
+  { chars: [jH('neutral')], text: '과제도, 음료도 무사하다. 괜한 상상이었다.' },
+
+  // 2. 파마
+  { time: '15:30', chars: [jH('smile')], who: '지안', text: '근데 {name|아야}, 사실 너한테 보여 줄 게 있어.' },
+  { who: '{name}', text: '뭔데? 아까부터 실내에서 모자를 안 벗길래 이상하다 했어.' },
+  { chars: [jH('awkward')], who: '지안', text: '짜잔…! 어제 큰맘 먹고 파마했어. 15만 원이나 들었다?' },
+  { chars: [jP('happy')], shake: true, text: '…생각보다 훨씬, 훨씬 뽀글뽀글하다.' },
+  { who: '{name}', text: '(솔직히 말하면… 전 머리가 백 배는 나았다.)' },
+  { chars: [jP('smile')], who: '지안', text: '미용실 원장님은 찰떡이라고 하셨는데, 네 말이 제일 궁금해. 솔직히 어때?' },
+  { text: '파마는 이미 끝났다. 되돌리려면 몇 달은 기다려야 한다.' },
+  { choice: 'q2' },
+
+  // 3. 주운 돈
+  { scene: 'street', time: '16:40', place: '정문 앞 거리', chars: [], text: '카페를 나서자 노을이 지기 시작했다. 지안은 개강총회 전에 집에 들렀다 온다며 먼저 버스를 탔다.' },
+  { text: '혼자 걷는데, 발밑에서 뭔가 팔랑인다.' },
+  { who: '{name}', text: '어? 이거… 5만 원짜리잖아?' },
+  { text: '주위엔 아무도 없다. 지갑도 이름도 없이 지폐 한 장뿐. 주인을 찾을 방법은 거의 없어 보인다.' },
+  { text: '마침 바로 옆 편의점 앞에 ‘유기견 보호소 사료 모금함’이 놓여 있다. 이번 달 사료가 모자란다는 안내문이 붙어 있다.' },
+  { choice: 'q3' },
+
+  // 4. 뉴스
+  { scene: 'bus', time: '17:20', place: '개강총회 가는 버스 안', chars: [], text: '개강총회 장소로 가는 버스 안. 습관처럼 휴대폰을 켠다.' },
+  { phone: NEWS, text: '오늘의 인기 뉴스 1위와 2위가 나란히 떠 있다.' },
+  { phone: NEWS, text: '두 기사 댓글 창에서는 똑같은 싸움이 벌어지고 있다. “그래서 누가 더 대단한 건데?”' },
+  { choice: 'q4' },
+  { text: '댓글을 하나 남기려는데, 버스가 정류장에 멈췄다. 고기 굽는 냄새가 여기까지 난다.' },
+
+  // 5. 족보 선배
+  { scene: 'bbq', time: '18:30', place: '학교 앞 고깃집, 개강총회', chars: [], text: '학과 개강총회. 지글지글 고기 굽는 소리와 웃음소리로 가득하다.' },
+  { chars: [ch('senior', 'smile')], who: '민재 선배', text: '내가 3학년 민재야. 신입생들 반갑다!' },
+  { who: '민재 선배', text: '아, 그리고 내가 2년 동안 정리한 전공 시험 족보가 있는데… 아무한테나 안 준다?' },
+  { chars: [jP('awkward', 'left'), ch('senior', 'neutral', 'right')], who: '지안', text: '(속닥속닥) 저 선배랑 친해지면 족보 준대. 벌써 다들 줄 섰어.' },
+  { chars: [jP('neutral', 'left'), ch('senior', 'happy', 'right')], who: '민재 선배', text: '그래서 내가 군대 있을 때 말이야. 그날 눈이 30센티가 왔는데…' },
+  { text: '벌써 40분째 이어지는 군대 이야기. 솔직히 하나도 재미없고, 이 선배랑 친해지고 싶은 마음도 별로 없다.' },
+  { who: '{name}', text: '(지금 맞장구쳐 주면 선배는 신나고, 나는 족보를 얻겠지. 그런데 족보 때문에 친한 척하는 건 좀…)' },
+  { choice: 'q5' },
+
+  // 6. 열람실 자리
+  { scene: 'library', time: '21:00', place: '중앙도서관 24시 열람실', chars: [jP('smile')], text: '개강총회가 끝나고, 남은 과제를 마저 쓰러 지안과 열람실에 왔다.' },
+  { who: '지안', text: '{name|아야}, 나 편의점 좀 다녀올게. 30분이면 와! 내 자리 꼭 맡아 줘.' },
+  { who: '{name}', text: '응, 걱정 마. 맡아 줄게.' },
+  { chars: [], text: '20분 뒤. 누군가 조심스럽게 내 어깨를 두드린다.' },
+  { chars: [ch('stranger', 'tired')], who: '낯선 학생', text: '저기… 혹시 옆자리 비어 있나요? 내일 아침에 전공 시험인데, 한 시간째 자리를 찾고 있어요.' },
+  { text: '둘러보니 정말 빈자리가 하나도 없다. 지안은 내일 시험이 없다. 오늘은 그냥 나랑 같이 있으려고 온 거다.' },
+  { choice: 'q6' },
+
+  // 7. 보조배터리
+  { time: '22:30', chars: [], text: '마지막 줄까지 꾹꾹 눌러 썼다. 드디어 세 장 완성!' },
+  { chars: [jP('awkward')], who: '지안', text: '우와, 벌써? 난 반 장 남았어. 집에 가서 마저 쓸게. 먼저 간다!' },
+  { chars: [], text: '지안을 보내고 짐을 챙기는데… 충전해 두던 보조배터리가 보이지 않는다.' },
+  { chars: [ch('ta', 'neutral')], who: '열람실 조교', text: '혹시 보조배터리 잃어버리셨어요? CCTV를 확인해 보니 이 학생이 가져갔더라고요.' },
+  { chars: [ch('ta', 'neutral', 'left'), ch('freshman', 'sad', 'right')], who: '신입생', text: '죄송합니다… 급하게 충전이 필요해서 잠깐만 쓰고 돌려놓으려다가, 그냥 가방에 넣었어요.' },
+  { who: '열람실 조교', text: '학과 규정상 열람실 물건 절도는 ‘한 달 열람실 이용 금지’예요. 다만 피해자 의견을 듣고 정하라고 하셔서요.' },
+  { text: '보조배터리는 이미 돌려받았다. 신입생은 처음 있는 일이라며, 눈물이 그렁그렁한 채 고개를 숙이고 있다.' },
+  { choice: 'q7' },
+
+  // 8. 빨간불
+  { scene: 'crosswalk', time: '23:50', place: '학교 앞 횡단보도', chars: [], text: '열람실을 나서니 거리가 고요하다. 집에 가는 막차는 23시 55분.' },
+  { text: '길 건너 정류장에 막차가 들어오는 게 보인다. 그런데 보행자 신호가 방금 빨간불로 바뀌었다.' },
+  { text: '다음 초록불까지는 2분. 양옆을 둘러봐도 차는 한 대도 없고, 보는 사람도 없다.' },
+  { who: '{name}', text: '(막차 놓치면 택시비 2만 원… 이번 주 용돈의 절반인데.)' },
+  { choice: 'q8' },
+
+  // 9. 대리 출석
+  { scene: 'room', time: '00:40', place: '내 방', chars: [], text: '겨우 집에 도착했다. 씻고 누우려는데 휴대폰이 울린다.' },
+  { phone: { kind: 'chat', with: '지안', items: MSG1 }, text: '지안에게서 온 메시지다.' },
+  { phone: { kind: 'chat', with: '지안', items: MSG2 }, text: '출석을 부를 때 교수님은 명단만 보신다. 들킬 가능성은 거의 없다.' },
+  { choice: 'q9' },
+
+  // 10. 다음 날
+  { scene: 'lecture2', day: 'D-DAY', time: '09:00', place: '인문관 304호', chars: [], text: '다음 날 아침. 퉁퉁 부은 눈으로 강의실에 도착했다.' },
+  { when: ['q9', 'C'], text: '출석 시간. “지안 학생?” “…네!” 목소리가 살짝 떨렸다. 교수님은 명단에서 고개를 들지 않으셨다.' },
+  { when: ['q9', 'D'], text: '출석 시간. 교수님은 지안의 이름에서 잠시 멈추더니 “메일 받았어요.” 하고 다음 이름을 부르셨다.' },
+  { chars: [ch('prof', 'neutral')], who: '강 교수님', text: '과제 걷기 전에 하나 물어볼게요. 어젯밤 과제 때문에 밤새운 학생이 많다고 들었어요.' },
+  { chars: [ch('prof', 'smile')], who: '강 교수님', text: '그래서 마감을 일주일 미뤄 줄까 하는데… 조건이 하나 있어요.' },
+  { chars: [ch('prof', 'neutral')], who: '강 교수님', text: '벌써 다 쓴 사람이 한 명이라도 있으면, 미리 끝낸 학생에게 불공평하니 연장은 없습니다. 다 쓴 사람, 손 들어 보세요.' },
+  { chars: [], text: '강의실이 쥐 죽은 듯 조용해졌다. 주머니 속 휴대폰이 쉴 새 없이 떨린다.' },
+  { phone: GROUP, text: '가방 속에는 어제 카페와 열람실에서 완성한 세 장짜리 과제가 들어 있다.' },
+  { phone: GROUP, text: '둘러보니, 다 쓴 사람은 아무래도… 나 하나뿐인 것 같다.' },
+  { chars: [ch('prof', 'neutral')], text: '교수님이 천천히 강의실을 둘러보신다.' },
+  { choice: 'q10' },
+
+  // 에필로그
+  { chars: [ch('prof', 'smile')], who: '강 교수님', text: '아, 그리고 과제 주제 기억하죠? ‘나를 만든 하루’.' },
+  { who: '강 교수님', text: '어제 하루 여러분이 내린 작은 선택들이 곧 여러분을 만든다는 거, 잊지 마세요.' },
+  { chars: [], text: '어제 하루, 나는 어떤 선택들을 했을까?' },
+  { end: true }
+];
+
+/* ---------- 선택지 (type D = 의무론적, C = 결과론적) ---------- */
+const Q = {
+  q1: {
+    time: '14:00', theme: '나쁜 의도, 나쁜 결과', prompt: '둘 중 더 화가 나는 상황은?',
+    options: [
+      { type: 'D', text: '화장실에 간 사이, 지안이 내 과제를 몰래 베끼고 있는 걸 목격한다.' },
+      { type: 'C', text: '뛰어다니는 아이 때문에 음료가 쏟아질까 봐 지안이 내 민트자바칩프라푸치노를 옮겨 주다가… 내 과제 위에 몽땅 엎었다.' }
+    ],
+    why: {
+      D: '과제는 멀쩡하지만, 몰래 베끼려는 의도 자체가 그릇되었죠. 이 장면에 더 화가 났다면 행위를 그 동기로 판단하는 의무론에 가까워요.',
+      C: '지안의 의도는 선했지만, 결과적으로 과제가 망가졌죠. 이 장면에 더 화가 났다면 행위를 그 결과로 판단하는 결과론에 가까워요.'
+    }
+  },
+  q2: {
+    time: '15:30', theme: '선의의 거짓말', prompt: '지안에게 뭐라고 말할까?',
+    options: [
+      { type: 'C', text: '“헐, 완전 잘 어울려! 분위기가 확 살아.”', after: [
+        { chars: [jP('happy')], who: '지안', text: '진짜?! 역시 {name}밖에 없다. 음료 한 잔 더 내가 쏠게!' }
+      ] },
+      { type: 'D', text: '“음… 솔직히 말하면 나는 전 머리가 더 잘 어울렸던 것 같아.”', after: [
+        { chars: [jP('awkward')], who: '지안', text: '아… 그래? 사실 나도 거울 보면서 좀 애매하다 생각했어.' },
+        { chars: [jP('smile')], who: '지안', text: '그래도 솔직하게 말해 줘서 고마워. 금방 자라겠지, 뭐!' }
+      ] }
+    ],
+    why: {
+      D: '친구가 서운할 수 있어도 거짓말을 하지 않았어요. 칸트는 좋은 결과를 위해서라도 거짓말은 허용되지 않는다고 보았어요.',
+      C: '되돌릴 수 없는 상황에서 거짓말로 친구를 기쁘게 했어요. 모두를 더 행복하게 만드는 결과를 택한 결과론적 판단이에요.'
+    }
+  },
+  q3: {
+    time: '16:40', theme: '주운 돈의 행방', prompt: '주운 5만 원, 어떻게 할까?',
+    options: [
+      { type: 'D', text: '조금 돌아가더라도 근처 파출소에 습득물로 맡긴다.', after: [
+        { text: '파출소에 지폐를 맡겼다. 경찰관이 서류를 내밀며 말했다. “주인이 안 나타나면 연락드릴게요.”' }
+      ] },
+      { type: 'C', text: '어차피 주인을 찾기 어려울 테니, 유기견 보호소 모금함에 넣는다.', after: [
+        { text: '지폐가 모금함 속으로 사르륵 떨어졌다. 안내문 속 강아지 사진이 왠지 웃고 있는 것 같다.' }
+      ] }
+    ],
+    why: {
+      D: '더 좋은 곳에 쓸 수 있더라도, 내 것이 아닌 돈을 마음대로 처분하지 않고 마땅한 절차를 따랐어요. 행위 자체의 정당성을 중시한 의무론적 판단이에요.',
+      C: '주인을 찾을 가능성이 낮다면, 그 돈이 가장 큰 행복을 만들어 낼 곳을 골랐어요. 결과의 유용성을 따진 결과론적 판단이에요.'
+    }
+  },
+  q4: {
+    time: '17:20', theme: '누구의 기부가 더 값질까', prompt: '내 생각에 더 칭찬받아야 할 사람은?',
+    options: [
+      { type: 'C', text: '이미지 때문이었다 해도, 1억 원으로 훨씬 많은 아이를 도운 인플루언서' },
+      { type: 'D', text: '금액은 적어도, 누가 알아주길 바라지 않고 순수한 마음으로 기부한 수험생' }
+    ],
+    why: {
+      D: '도움의 크기보다 ‘왜’ 기부했는지를 더 높이 평가했어요. 칸트는 의무를 따르려는 선한 의지에서 나온 행위만이 도덕적 가치를 지닌다고 보았어요.',
+      C: '동기와 상관없이 더 많은 사람을 도운 결과를 높이 평가했어요. 결과로 행위의 가치를 판단하는 결과론에 가까워요.'
+    }
+  },
+  q5: {
+    time: '18:30', theme: '사람을 수단으로 대하기', prompt: '끝나지 않는 군대 이야기, 어떻게 할까?',
+    options: [
+      { type: 'C', text: '“우와, 진짜요? 그래서요?” 눈을 반짝이며 맞장구치고, 번호까지 받아 둔다.', after: [
+        { chars: [jP('neutral', 'left'), ch('senior', 'happy', 'right')], who: '민재 선배', text: '오, 너 리액션 좋다! 이따 족보 보내 줄게.' }
+      ] },
+      { type: 'D', text: '족보는 아쉽지만, 마음에 없는 친한 척은 하지 않고 예의만 지킨다.', after: [
+        { chars: [jP('neutral', 'left'), ch('senior', 'neutral', 'right')], who: '민재 선배', text: '…아무튼 그래서 밤새 눈을 치웠다는 얘기지. 고기 탄다, 먹어!' },
+        { text: '족보는 다른 동기에게 돌아간 것 같다.' }
+      ] }
+    ],
+    why: {
+      D: '족보를 얻으려고 선배를 이용하지 않았어요. 칸트는 다른 사람을 결코 단지 수단으로만 대하지 말고 언제나 목적으로 대하라고 했어요.',
+      C: '아무도 손해 보지 않고 모두가 이득을 보는 쪽을 택했어요. 결과적으로 모두가 만족한다면 괜찮다고 보는 결과론적 판단이에요.'
+    }
+  },
+  q6: {
+    time: '21:00', theme: '약속과 더 큰 도움', prompt: '지안의 자리, 어떻게 할까?',
+    options: [
+      { type: 'D', text: '“죄송해요, 친구가 곧 온다고 해서 맡아 두기로 약속했어요.”', after: [
+        { chars: [ch('stranger', 'sad')], who: '낯선 학생', text: '아… 네, 알겠어요.' },
+        { chars: [jP('smile')], text: '학생은 다시 열람실을 돌기 시작했다. 잠시 후, 지안이 컵라면 냄새를 풍기며 돌아왔다.' }
+      ] },
+      { type: 'C', text: '“여기 앉으세요.” 지안에게는 미안하지만, 시험 있는 사람이 쓰는 게 낫다.', after: [
+        { chars: [ch('stranger', 'happy')], who: '낯선 학생', text: '정말요? 감사합니다, 진짜 살았어요!' },
+        { chars: [jP('awkward')], text: '잠시 후 돌아온 지안은 사정을 듣더니, 어깨를 으쓱하고 휴게실로 자리를 옮겼다.' }
+      ] }
+    ],
+    why: {
+      D: '더 급한 사람이 있었지만 친구와의 약속을 지켰어요. 약속을 지키는 것 자체를 마땅한 의무로 여기는 의무론적 판단이에요.',
+      C: '약속을 어기더라도 자리가 더 절실한 사람에게 양보했어요. 더 큰 이익을 가져오는 결과를 택한 결과론적 판단이에요.'
+    }
+  },
+  q7: {
+    time: '22:30', theme: '처벌은 왜 하는가', prompt: '조교에게 뭐라고 말할까?',
+    options: [
+      { type: 'C', text: '“물건도 돌려받았고 충분히 반성하는 것 같아요. 이번에는 그냥 넘어가 주세요.”', after: [
+        { chars: [ch('ta', 'neutral', 'left'), ch('freshman', 'teary', 'right')], who: '신입생', text: '감사합니다… 다시는 안 그럴게요.' }
+      ] },
+      { type: 'D', text: '“반성한 건 알겠지만, 잘못한 만큼은 책임져야죠. 규정대로 해 주세요.”', after: [
+        { chars: [ch('ta', 'neutral', 'left'), ch('freshman', 'sad', 'right')], who: '신입생', text: '…네. 제가 잘못한 거니까요.' },
+        { text: '조교가 이용 정지 서류를 꺼냈다.' }
+      ] }
+    ],
+    why: {
+      D: '반성 여부와 상관없이 잘못한 만큼 책임져야 한다고 봤어요. 처벌은 잘못에 대한 마땅한 대가라고 보는 칸트의 응보주의와 닮았어요.',
+      C: '처벌로 얻을 이익이 없다면 처벌할 필요가 없다고 봤어요. 처벌은 범죄 예방이나 교화 같은 좋은 결과를 낼 때만 정당하다는 공리주의의 관점과 닮았어요.'
+    }
+  },
+  q8: {
+    time: '23:50', theme: '아무도 없는 빨간불', prompt: '어떻게 할까?',
+    options: [
+      { type: 'D', text: '그래도 빨간불이니까, 초록불이 될 때까지 기다린다.', after: [
+        { text: '초록불이 켜졌을 때, 막차는 이미 떠난 뒤였다. 한숨을 쉬며 택시 앱을 켠다.' }
+      ] },
+      { type: 'C', text: '차도 사람도 없으니, 얼른 건너서 막차를 탄다.', after: [
+        { text: '숨을 헐떡이며 막차에 올라탔다. 기사님이 무심하게 고개를 끄덕였다.' }
+      ] }
+    ],
+    why: {
+      D: '아무도 보지 않고 아무 피해가 없어도 규칙을 지켰어요. ‘모두가 그렇게 행동해도 괜찮은가?’를 묻는 칸트의 보편화 원리와 닮았어요.',
+      C: '누구에게도 피해를 주지 않으면서 내 손해를 줄이는 쪽을 택했어요. 행위의 결과로 판단하는 결과론적 판단이에요.'
+    }
+  },
+  q9: {
+    time: '00:40', theme: '친구를 위한 대리 출석', prompt: '지안에게 답장을 보내자.',
+    options: [
+      { type: 'C', text: '“걱정 마. 내가 대신 대답해 줄게. 콩이 잘 챙겨!”', after: [
+        { phone: { kind: 'chat', with: '지안', items: MSG2.concat([{ from: 'me', text: '걱정 마. 내가 대신 대답해 줄게. 콩이 잘 챙겨!' }, { from: 'them', text: '{name} 최고ㅠㅠㅠ 이 은혜 평생 안 잊을게' }]) }, text: '알람을 7시로 맞추고 눈을 감았다.' }
+      ] },
+      { type: 'D', text: '“콩이 너무 걱정된다ㅠㅠ 근데 대신 대답하는 건 못 하겠어. 교수님께 미리 사정을 메일로 말씀드려 보자.”', after: [
+        { phone: { kind: 'chat', with: '지안', items: MSG2.concat([{ from: 'me', text: '콩이 너무 걱정된다ㅠㅠ 근데 대신 대답하는 건 못 하겠어. 교수님께 미리 사정을 메일로 말씀드려 보자' }, { from: 'them', text: '…그치, 내가 무리한 부탁 했다. 지금 바로 메일 써 볼게! 고마워' }]) }, text: '알람을 7시로 맞추고 눈을 감았다.' }
+      ] }
+    ],
+    why: {
+      D: '친구를 돕고 싶었지만 거짓 대답은 하지 않았어요. 의도가 좋아도 속이는 행위 자체는 옳지 않다고 본 의무론적 판단이에요.',
+      C: '들킬 위험이 낮고 친구가 큰 손해를 피할 수 있다면 돕는 쪽을 택했어요. 결과를 따져 본 결과론적 판단이에요.'
+    }
+  },
+  q10: {
+    time: '다음 날 09:00', theme: '정직과 다수의 행복', prompt: '교수님과 눈이 마주쳤다.',
+    options: [
+      { type: 'D', text: '조용히 손을 든다. “저… 다 썼습니다.”', after: [
+        { chars: [ch('prof', 'smile')], who: '강 교수님', text: '역시 있네요. 그럼 마감은 그대로! 지금 걷겠습니다.' },
+        { chars: [], text: '강의실 곳곳에서 깊은 한숨이 터져 나왔다. 몇몇의 원망 섞인 눈빛이 느껴진다.' }
+      ] },
+      { type: 'C', text: '가방을 꾹 누른 채, 가만히 있는다.', after: [
+        { chars: [ch('prof', 'neutral')], who: '강 교수님', text: '아무도 없나요? 그럼 마감은 다음 주로 미룹니다.' },
+        { chars: [], text: '강의실에 환호성이 터졌다. 단톡방에는 ‘살았다ㅠㅠ’가 끝없이 올라온다.' }
+      ] }
+    ],
+    why: {
+      D: '수십 명이 아쉬워하더라도 사실대로 말했어요. 결과와 상관없이 정직의 의무를 지킨 의무론적 판단이에요.',
+      C: '침묵 하나로 수십 명이 행복해질 수 있었어요. ‘최대 다수의 최대 행복’을 택한 결과론적 판단이에요.'
+    }
+  }
+};
+const QIDS = Object.keys(Q);
+
+/* ---------- 결과 유형 (의무론적 선택 수 기준) ---------- */
+const TIERS = [
+  { min: 8, title: '원칙의 수호자', tag: '확실한 의무론형',
+    desc: '아무리 좋은 결과가 기다리고 있어도, 당신은 ‘해서는 안 되는 일’ 앞에서 멈춰 섰어요. 거짓말, 약속 어기기, 규칙 위반처럼 행위 자체가 옳지 않다면, 그 덕분에 누군가 더 행복해지더라도 쉽게 손을 들어 주지 않았죠. 행위의 옳고 그름이 결과가 아니라 행위 자체와 그 동기에 달려 있다고 보는 의무론의 시선과 꼭 닮았어요.',
+    thinker: '칸트', idea: '아무 조건 없이 선한 것은 오직 선의지뿐이며, 행위의 도덕적 가치는 결과가 아니라 의무를 따르려는 의지에서 나온다고 보았어요.',
+    ask: '원칙을 지킨 탓에 누군가 크게 다치게 된다면, 그때도 원칙을 지키는 것이 옳을까요?' },
+  { min: 6, title: '양심의 나침반', tag: '의무론에 기운 사람',
+    desc: '대부분의 장면에서 당신은 ‘결과가 어떻게 되든 지켜야 할 도리’를 먼저 떠올렸어요. 그러면서도 몇몇 순간에는 결과를 함께 저울질했죠. 기본적으로 의무론 쪽에 서 있지만, 상황을 살피는 유연함도 가진 사람이에요.',
+    thinker: '칸트', idea: '내 행동의 원칙이 모든 사람에게 적용되는 보편적인 법칙이 될 수 있는지 스스로 물어보라고 했어요.',
+    ask: '결과 쪽으로 마음이 기울었던 장면은 어디였나요? 그 순간 당신의 원칙에는 어떤 예외가 생겼던 걸까요?' },
+  { min: 5, title: '두 갈래 길의 철학자', tag: '의무론과 결과론 사이',
+    desc: '의무론적 선택과 결과론적 선택이 정확히 다섯 번씩! 당신은 하나의 잣대로 모든 상황을 재기보다, 장면마다 무엇이 더 중요한지 따로 고민한 사람이에요. 실제 윤리학에서도 두 입장의 장점을 함께 살리려는 시도가 꾸준히 이어져 왔어요.',
+    thinker: '칸트와 밀, 두 사람 모두', idea: '당신 안에서는 ‘의무’를 말하는 목소리와 ‘행복’을 말하는 목소리가 함께 들려요. 둘 중 무엇이 더 무거운지 친구들과 토론해 보세요.',
+    ask: '두 입장이 정면으로 부딪칠 때, 당신은 무엇을 기준으로 한쪽을 고르나요?' },
+  { min: 3, title: '따뜻한 계산가', tag: '결과론에 기운 사람',
+    desc: '당신은 대체로 ‘그래서 누가, 얼마나 더 행복해지지?’를 따져 본 사람이에요. 다만 몇몇 장면에서는 결과와 상관없이 지키고 싶은 선을 지켰죠. 결과론 쪽으로 기울어 있지만, 나름의 원칙도 품고 있는 사람이에요.',
+    thinker: '밀', idea: '행복을 늘리는 행위가 옳다고 보면서도, 쾌락에는 질적인 차이가 있어 더 높은 정신적 쾌락을 중시해야 한다고 했어요.',
+    ask: '결과만 좋다면 정말 어떤 행동이든 괜찮을까요? 당신이 끝까지 지킨 선은 무엇이었나요?' },
+  { min: 0, title: '최대 행복의 설계자', tag: '확실한 결과론형',
+    desc: '당신은 선택이 가져올 결과, 그리고 그 결과로 행복해질 사람의 수를 가장 중요하게 여겼어요. 작은 거짓말이나 규칙 위반이라도 더 많은 사람을 더 행복하게 만든다면 기꺼이 택했죠. 행위의 결과로 옳고 그름을 판단하는 결과론, 그중에서도 공리주의의 시선과 꼭 닮았어요.',
+    thinker: '벤담', idea: '‘최대 다수의 최대 행복’을 도덕의 기준으로 삼고, 쾌락과 고통의 양을 계산해 행위를 평가하려 했어요.',
+    ask: '다수의 행복을 위해 한 사람의 권리나 존엄을 희생해도 괜찮을까요?' }
+];
+
+/* ---------- 진행 엔진 ---------- */
+const game = $('#game');
+const sceneEl = $('.scene', game);
+const charsEl = $('.chars', game);
+const dialogEl = $('.dialog', game);
+const nameEl = $('.nameplate', game);
+const lineEl = $('.line', game);
+const moreEl = $('.more', game);
+const phoneEl = $('.phone', game);
+const choiceEl = $('.choice', game);
+const promptEl = $('.prompt', choiceEl);
+const optsEl = $('.opts', choiceEl);
+const liveEl = $('#live');
+const progressEl = $('#progress');
+const analyzingEl = $('.analyzing', game);
+
+const S = { steps: [], i: -1, answers: {}, scene: null, mode: 'idle', typing: false, timer: null, full: '', currentQ: null };
+
+function showScreen(id) {
+  ['title', 'game', 'result'].forEach(s => { $('#' + s).hidden = s !== id; });
+}
+
+function buildCells(el, n, filled) {
+  el.innerHTML = '';
+  for (let k = 0; k < n; k++) {
+    const i = document.createElement('i');
+    if (k < filled) i.className = 'done';
+    el.appendChild(i);
+  }
+}
+
+function updateProgress() {
+  const n = Object.keys(S.answers).length;
+  buildCells(progressEl, QIDS.length, n);
+  progressEl.setAttribute('aria-label', `진행 ${n}/${QIDS.length}`);
+}
+
+/* 화면 비율에 맞춰 배경이 보이는 범위를 정함: 가로 화면은 좌우를 조금만 자르고, 세로 화면은 핵심 장면 폭(560)을 지킨 채 위아래로 넓힘 */
+function viewBoxFor(W, H) {
+  const a = W / H, R = 800 / 450, MIN = 560;
+  let x, y, w, h;
+  if (a >= R) { w = 800; h = 800 / a; x = 0; y = (450 - h) / 2; }
+  else if (450 * a >= MIN) { h = 450; w = 450 * a; x = 400 - w / 2; y = 0; }
+  else { w = MIN; h = MIN / a; x = 400 - w / 2; y = -(h - 450) * 0.3; }
+  return [x, y, w, h].map(v => v.toFixed(1)).join(' ');
+}
+function fitScene(svg) {
+  if (!svg) return;
+  const r = game.getBoundingClientRect();
+  if (r.width < 2 || r.height < 2) return;
+  svg.setAttribute('viewBox', viewBoxFor(r.width, r.height));
+}
+function fitScenes() { sceneEl.querySelectorAll('.scene-layer > svg').forEach(fitScene); }
+
+function setScene(name) {
+  S.scene = name;
+  const layer = document.createElement('div');
+  layer.className = 'scene-layer';
+  layer.innerHTML = SCENES[name]();
+  fitScene(layer.querySelector('svg'));
+  if (reduceMotion) {
+    sceneEl.innerHTML = '';
+    sceneEl.appendChild(layer);
+    return;
+  }
+  layer.style.opacity = '0';
+  sceneEl.appendChild(layer);
+  const olds = Array.from(sceneEl.children).filter(n => n !== layer);
+  requestAnimationFrame(() => requestAnimationFrame(() => { layer.style.opacity = '1'; }));
+  setTimeout(() => olds.forEach(n => n.remove()), 650);
+}
+
+function setChars(list) {
+  const keep = new Set();
+  list.forEach(sp => {
+    keep.add(sp.id);
+    let el = charsEl.querySelector(`[data-id="${sp.id}"]`);
+    const sig = JSON.stringify(sp);
+    if (!el) {
+      el = document.createElement('div');
+      el.className = 'char entering';
+      el.dataset.id = sp.id;
+      charsEl.appendChild(el);
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove('entering')));
+    }
+    el.classList.remove('leaving', 'pos-left', 'pos-center', 'pos-right');
+    el.classList.add('pos-' + sp.pos);
+    if (el.dataset.sig !== sig) { el.innerHTML = charSVG(sp); el.dataset.sig = sig; }
+  });
+  charsEl.querySelectorAll('.char').forEach(el => {
+    if (!keep.has(el.dataset.id)) {
+      el.classList.add('leaving');
+      setTimeout(() => { if (el.classList.contains('leaving')) el.remove(); }, reduceMotion ? 0 : 380);
+    }
+  });
+}
+
+function setFx(fx) {
+  game.classList.toggle('imagine', fx === 'imagine');
+}
+
+function shake() {
+  if (reduceMotion) return;
+  game.classList.remove('shake');
+  void game.offsetWidth;
+  game.classList.add('shake');
+}
+
+function renderPhone(ph) {
+  if (!ph) { phoneEl.hidden = true; phoneEl.innerHTML = ''; return; }
+  const head = ph.kind === 'news' ? '오늘의 뉴스' : fill(ph.with);
+  let body = '';
+  if (ph.kind === 'news') {
+    body = ph.items.map(n => `<article class="news"><span class="tag">${esc(n.tag)}</span><h4>${esc(fill(n.title))}</h4><p>${esc(fill(n.body))}</p></article>`).join('');
+  } else {
+    body = ph.items.map(m => `<div class="bub ${m.from}">${m.name ? `<span class="from">${esc(m.name)}</span>` : ''}${esc(fill(m.text))}</div>`).join('');
+  }
+  phoneEl.innerHTML = `<div class="ph-screen"><div class="ph-head">${esc(head)}</div><div class="ph-body ${ph.kind}">${body}</div></div>`;
+  phoneEl.hidden = false;
+}
+
+function updateHud(st) {
+  if (st.day !== undefined) $('.day', game).textContent = st.day;
+  if (st.time !== undefined) $('.hm', game).textContent = st.time;
+  if (st.place !== undefined) $('.where', game).textContent = st.place;
+}
+
+function speak(who, text) {
+  const speaker = who ? fill(who) : '';
+  const t = fill(text);
+  if (speaker) {
+    nameEl.textContent = speaker;
+    nameEl.hidden = false;
+    nameEl.classList.toggle('me', who === '{name}');
+    dialogEl.classList.remove('narr');
+  } else {
+    nameEl.hidden = true;
+    dialogEl.classList.add('narr');
+  }
+  const shown = charsEl.querySelectorAll('.char:not(.leaving)');
+  shown.forEach(el => {
+    const isSpeaker = CAST[el.dataset.id] && CAST[el.dataset.id].name === speaker;
+    const anyCastSpeaking = Object.values(CAST).some(c => c.name === speaker);
+    el.classList.toggle('dim', shown.length > 1 && anyCastSpeaking && !isSpeaker);
+  });
+  liveEl.textContent = (speaker ? speaker + ': ' : '') + t;
+  S.full = t;
+  moreEl.hidden = true;
+  clearInterval(S.timer);
+  if (reduceMotion) { lineEl.textContent = t; S.typing = false; moreEl.hidden = false; return; }
+  S.typing = true;
+  let k = 0;
+  lineEl.textContent = '';
+  S.timer = setInterval(() => {
+    k += 1;
+    lineEl.textContent = t.slice(0, k);
+    if (k >= t.length) finishTyping();
+  }, 28);
+}
+
+function finishTyping() {
+  clearInterval(S.timer);
+  lineEl.textContent = S.full;
+  S.typing = false;
+  moreEl.hidden = false;
+}
+
+function render(st) {
+  if (st.scene && st.scene !== S.scene) setScene(st.scene);
+  updateHud(st);
+  if (st.fx !== undefined) setFx(st.fx);
+  if (st.chars !== undefined) setChars(st.chars);
+  renderPhone(st.phone || null);
+  if (st.shake) shake();
+  if (st.choice) { showChoice(st.choice); return; }
+  if (st.end) { finish(); return; }
+  speak(st.who, st.text);
+}
+
+function advance() {
+  if (S.mode !== 'play') return;
+  if (S.typing) { finishTyping(); return; }
+  S.i += 1;
+  while (S.i < S.steps.length) {
+    const st = S.steps[S.i];
+    if (st.when) {
+      const a = S.answers[st.when[0]];
+      if (!a || a.type !== st.when[1]) { S.i += 1; continue; }
+    }
+    break;
+  }
+  const st = S.steps[S.i];
+  if (st) render(st);
+}
+
+function showChoice(qid) {
+  const q = Q[qid];
+  S.mode = 'choice';
+  S.currentQ = qid;
+  promptEl.textContent = fill(q.prompt);
+  optsEl.innerHTML = '';
+  q.options.forEach((o, idx) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'opt';
+    b.innerHTML = `<span class="key" aria-hidden="true">${idx + 1}</span><span class="txt"></span>`;
+    $('.txt', b).textContent = fill(o.text);
+    b.addEventListener('click', e => { e.stopPropagation(); choose(qid, idx); });
+    optsEl.appendChild(b);
+  });
+  liveEl.textContent = fill(q.prompt);
+  choiceEl.hidden = false;
+  requestAnimationFrame(() => { const f = optsEl.querySelector('.opt'); if (f) f.focus({ preventScroll: true }); });
+}
+
+function choose(qid, idx) {
+  if (S.mode !== 'choice' || S.currentQ !== qid) return;
+  const o = Q[qid].options[idx];
+  S.answers[qid] = { idx, type: o.type };
+  choiceEl.hidden = true;
+  S.mode = 'play';
+  S.currentQ = null;
+  updateProgress();
+  if (o.after) S.steps.splice(S.i + 1, 0, ...o.after);
+  game.focus({ preventScroll: true });
+  advance();
+}
+
+function finish() {
+  S.mode = 'end';
+  buildCells($('.cells', analyzingEl), QIDS.length, 0);
+  $('.cells', analyzingEl).querySelectorAll('i').forEach((i, k) => { i.style.animationDelay = (0.15 + k * 0.13) + 's'; });
+  analyzingEl.hidden = false;
+  setTimeout(() => {
+    buildResult();
+    showScreen('result');
+    analyzingEl.hidden = true;
+    const r = $('#result');
+    r.scrollTop = 0;
+    r.focus({ preventScroll: true });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const pin = $('.pin', r);
+      if (pin) pin.style.left = pin.dataset.to + '%';
+    }));
+  }, reduceMotion ? 200 : 1900);
+}
+
+/* ---------- 결과 ---------- */
+function buildResult() {
+  const d = QIDS.filter(id => S.answers[id] && S.answers[id].type === 'D').length;
+  const c = QIDS.length - d;
+  const tier = TIERS.find(t => d >= t.min);
+  const to = (4 + 92 * (c / QIDS.length)).toFixed(1);
+
+  const review = QIDS.map(id => {
+    const q = Q[id], a = S.answers[id];
+    const o = q.options[a.idx];
+    const other = q.options.find(x => x.type !== a.type);
+    const label = t => t === 'D' ? '의무론적 선택' : '결과론적 선택';
+    const time = q.time.startsWith('다음 날') ? `<small>다음 날</small>${q.time.replace('다음 날 ', '')}` : q.time;
+    return `<li>
+      <div class="r-time">${time}</div>
+      <div>
+        <div class="r-head"><span class="r-theme">${esc(q.theme)}</span><span class="chip ${a.type}">${label(a.type)}</span></div>
+        <p class="r-choice">${esc(fill(o.text))}</p>
+        <p class="r-why">${esc(q.why[a.type])}</p>
+        <details><summary>다른 선택을 했다면</summary>
+          <p class="r-choice">${esc(fill(other.text))}</p>
+          <p class="r-why"><span class="chip ${other.type}">${label(other.type)}</span> ${esc(q.why[other.type])}</p>
+        </details>
+      </div>
+    </li>`;
+  }).join('');
+
+  $('#result').innerHTML = `<article class="report" tabindex="-1">
+    <p class="who">${esc(playerName)}의 하루를 돌아보면</p>
+    <h1 class="type-title">${tier.title}</h1>
+    <p class="type-tag">${tier.tag}</p>
+    <div class="ruler" role="img" aria-label="의무론적 선택 ${d}번, 결과론적 선택 ${c}번">
+      <div class="ends"><b>의무론</b><b>결과론</b></div>
+      <div class="bar"><div class="pin" data-to="${to}" style="left:${reduceMotion ? to : 50}%">나</div></div>
+    </div>
+    <p class="score">열 번의 선택 중 의무론적 선택 ${d}번, 결과론적 선택 ${c}번</p>
+    <p class="desc">${tier.desc}</p>
+    <div class="aside"><h3>가장 닮은 사상가</h3><p class="big">${tier.thinker}</p><p>${tier.idea}</p></div>
+    <div class="aside"><h3>생각해 볼 질문</h3><p>${tier.ask}</p></div>
+
+    <h2>두 입장, 한눈에 보기</h2>
+    <div class="tchart">
+      <div><h3>의무론</h3>
+        <p>행위의 옳고 그름은 결과가 아니라, 그 행위가 마땅히 따라야 할 도덕 법칙, 곧 의무에 맞는지에 달려 있다고 봐요.</p>
+        <p class="k">핵심 생각: 선의지, 의무, 정언 명령, 보편화 가능성, 인격을 목적으로 대우하기<br>대표 사상가: 칸트</p></div>
+      <div><h3>결과론</h3>
+        <p>행위의 옳고 그름은 그 행위가 가져오는 결과에 달려 있다고 봐요. 대표적인 결과론인 공리주의는 더 많은 사람에게 더 큰 행복을 가져오는 행위를 옳다고 봐요.</p>
+        <p class="k">핵심 생각: 유용성의 원리, 최대 다수의 최대 행복, 쾌락의 계산<br>대표 사상가: 벤담, 밀</p></div>
+    </div>
+
+    <h2>내 선택 돌아보기</h2>
+    <ol class="review">${review}</ol>
+
+    <p class="note">이 결과는 수업을 위한 사고 실험이에요. 실제 의무론과 결과론은 훨씬 정교해서, 규칙 공리주의처럼 결과론이면서도 규칙을 중시하는 입장도 있답니다. 결과를 정답으로 받아들이기보다, 친구들과 생각을 나누는 출발점으로 삼아 보세요.</p>
+    <div class="again"><button class="btn" id="againBtn" type="button">처음부터 다시 하기</button></div>
+  </article>`;
+  $('#againBtn').addEventListener('click', () => {
+    showScreen('title');
+    $('#nm').focus({ preventScroll: true });
+  });
+}
+
+/* ---------- 시작 ---------- */
+function start() {
+  const v = $('#nm').value.trim();
+  playerName = v || '새내기';
+  S.steps = SCRIPT.slice();
+  S.i = -1;
+  S.answers = {};
+  S.scene = null;
+  S.typing = false;
+  clearInterval(S.timer);
+  sceneEl.innerHTML = '';
+  charsEl.innerHTML = '';
+  setFx('');
+  renderPhone(null);
+  choiceEl.hidden = true;
+  analyzingEl.hidden = true;
+  updateProgress();
+  showScreen('game');
+  game.focus({ preventScroll: true });
+  S.mode = 'play';
+  advance();
+}
+
+$('#startBtn').addEventListener('click', start);
+$('#nm').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); start(); }
+});
+window.addEventListener('resize', fitScenes);
+window.addEventListener('orientationchange', () => setTimeout(fitScenes, 200));
+if ('ResizeObserver' in window) new ResizeObserver(fitScenes).observe(game);
+game.addEventListener('click', () => { if (S.mode === 'play') advance(); });
+document.addEventListener('keydown', e => {
+  if ($('#game').hidden) return;
+  if (S.mode === 'choice') {
+    if (e.key === '1' || e.key === '2') { e.preventDefault(); choose(S.currentQ, Number(e.key) - 1); }
+    return;
+  }
+  if (S.mode === 'play' && (e.key === ' ' || e.key === 'Enter' || e.key === 'ArrowRight')) {
+    e.preventDefault();
+    advance();
+  }
+});
+})();
+</script>
+</body>
+</html>
